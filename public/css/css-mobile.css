@@ -1,0 +1,138 @@
+@media only screen and (max-width: 600px) {
+  * {
+    overflow-x: visible !important;
+  }
+  #page1 {
+    margin-left: 5%;
+  }
+  .social-icons {
+    /* position: absolute;
+    left: 82vw;
+    top: 46vh; */
+    display: none;
+  }
+  .nav-item:hover {
+    border-radius: 1.5vw;
+  }
+  .navbar-brand img {
+    width: 25vh;
+    height: 10vh;
+    margin-right: 12%;
+  }
+  .navbar {
+    border-radius: 0px 0px 30px 30px;
+  }
+
+  #Logo-Tree {
+    margin-left: -2%;
+  }
+  .copyright {
+    display: none;
+  }
+  .text-intro {
+    margin-top: 15%;
+    margin-left: -2.5%;
+  }
+  .heading {
+    margin-top: 10%;
+    font-size: 2.3rem;
+  }
+  .subheading {
+    margin-top: 10%;
+    font-size: 2rem;
+  }
+  .needs-validation {
+    margin-left: 10%;
+  }
+  #map {
+    margin-left: 9%;
+    height: 40vh;
+    margin-bottom: 10%;
+  }
+  .job-heading {
+    text-align: center;
+    margin-top: 10%;
+    margin-left: 5%;
+  }
+  .job-items {
+    margin: 20% 0%;
+    text-align: center;
+  }
+
+  .contact-list img {
+    transform: scale(0.5);
+  }
+  .contact-list {
+    margin-left: 8%;
+    margin-right: 2%;
+  }
+  .email-contact {
+    display: block;
+    margin-left: 18%;
+    margin-top: -11%;
+  }
+  .location-contact {
+    display: block;
+    margin-left: 14%;
+  }
+  .career {
+    margin-left: 3%;
+    text-align: center;
+    margin-bottom: 10%;
+  }
+  .mobile-cr {
+    background-color: #666666;
+    color: #fff;
+    margin-bottom: 0%;
+    font-size: 1rem;
+  }
+  #career-page {
+    margin-left: 5%;
+  }
+
+  .instagram {
+    margin-left: 10%;
+  }
+
+  .twitter {
+    margin-left: 9%;
+  }
+  .fb {
+    margin-left: 2.6%;
+  }
+  .map img {
+    height: 40vh;
+    margin-bottom: 10%;
+  }
+  .text-career {
+    text-align: center;
+    margin-left: 5%;
+  }
+  .sk-instagram-feed {
+    margin-top: 0%;
+  }
+  .sk-instagram-feed-item {
+    margin-bottom: -30%;
+  }
+}
+/* desktop css only */
+@media only screen and (min-width: 992px) {
+  /* #page2,
+  #page3,
+  #page4,
+  #mobile-footer {
+    display: none;
+  } */
+
+  .career {
+    padding-right: 5%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+  }
+  .fb {
+    margin-left: 5%;
+  }
+  .grid-content {
+    margin-right: 10%;
+  }
+}

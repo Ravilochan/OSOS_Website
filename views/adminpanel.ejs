@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Panel</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Gupter|Solway|Ubuntu&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+  <style>
+  body{
+    overflow-x: hidden;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  *{
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .card-header{
+    font-family: 'Solway', serif;
+  }
+  .card{
+    box-shadow: 5px 8px 8px #868181;
+  }
+  #articleDisp{
+    height: 100%;
+  }
+  #addMember{
+    height: 100%;
+  }
+</style>
+<script>
+
+</script>
+</head>
+
+<body>
+
+<h2 style="color: white;text-align: center;font-size: 40px;font-weight: 600;font-family: 'Gupter', serif;position:relative">
+WELCOME TO THE ADMIN PANEL<i class="fa fa-cog fa-spin fa-fw" style="font-size:2.5vw;"></i><i class="fa fa-cog fa-spin fa-fw" style="font-size:2vw;"></i>
+</h2>
+
+<!--   -->
+<!-- Member Modal -->
+  <div class="modal fade" id="delMem_modal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" style="background:rgba(74, 230, 230, 0.849);">
+          <h3 class="modal-title">Are you sure you want to remove <span id="delete"></span>?</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form onsubmit="get_action_forMember(this);" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-danger">Yes</button>
+                  <!-- <input type="submit"> Yes -->
+                  <!-- <button type="button" class="btn btn-danger">Delete</button> -->
+            </form>
+            <!-- <a class="remove">Yes</a> -->
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Articles Modal -->
+<div class="modal fade" id="delArticle_modal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" style="background:rgba(233, 149, 23, 0.849)">
+          <h3 class="modal-title">Are you sure you want to remove <span id="deleteArticle"></span>?</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form onsubmit="get_action_forArticle(this);" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-danger">Yes</button>
+                  <!-- <input type="submit"> Yes -->
+                  <!-- <button type="button" class="btn btn-danger">Delete</button> -->
+            </form>
+            <!-- <a class="remove">Yes</a> -->
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Carrers Modal -->
+<div class="modal fade" id="delCareer_modal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" style="background:rgb(219, 118, 240)">
+          <h3 class="modal-title">Are you sure you want to remove <span id="deleteCareer"></span>?</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form onsubmit="get_action_forCareer(this);" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-danger">Yes</button>
+                  <!-- <input type="submit"> Yes -->
+                  <!-- <button type="button" class="btn btn-danger">Delete</button> -->
+            </form>
+            <!-- <a class="remove">Yes</a> -->
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Adding Members Modal -->
+<div class="modal fade" id="addMember_modal">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header" style="background:rgba(74, 230, 230, 0.849);">
+        <h3 class="modal-title">Adding Member</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+          <!-- <div class="card"> -->
+              <!-- <div class="card-body" style="padding: 5px 10px;"> -->
+                  <div class="form-group">
+                      <form action="/addmember" method="POST">
+                        <div class="form-group">
+                          <label for="memName">Name:</label>
+                          <input type="text" class="form-control" placeholder="Enter name" id="memName" name="memName">
+                        </div>
+                        <div class="form-group">
+                          <label for="memPosition">Position:</label>
+                          <input type="text" class="form-control" placeholder="Enter position" id="memPosition" name="memPosition">
+                        </div>
+                        <div class="form-group">
+                          <label for="memInfo">About:</label>
+                          <input type="text" class="form-control" placeholder="Enter information" id="memInfo" name="memInfo">
+                        </div>
+                        <div class="form-group">
+                          <label for="memImg">Image:</label>
+                          <input type="text" class="form-control" placeholder="Enter imagename" id="memImg" name="memImg">
+                        </div>
+                        <button type="submit" class="btn" style="background: rgba(74, 230, 230, 0.849);">Add Member</button>
+                      </form>                
+                  </div>
+              <!-- </div> -->
+          <!-- </div> -->
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Adding Articles Modal -->
+<div class="modal fade" id="addArticle_modal">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header" style="background:rgba(233, 149, 23, 0.849)">
+        <h3 class="modal-title">Adding Articles</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div class="form-group">
+              <form action="/addarticle" method="POST">
+                <div class="form-group">
+                  <label for="articleName">Article Name:</label>
+                  <input type="text" class="form-control" placeholder="Enter name" id="articleName" name="articleName">
+                </div>
+                <div class="form-group">
+                  <label for="articleInfo">Article Info:</label>
+                  <textarea type="text" class="form-control" placeholder="Enter position" id="articleInfo" name="articleInfo"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="articleImg">Article Image:</label>
+                  <input type="text" class="form-control" placeholder="Enter information" id="articleImg" name="articleImg">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>                
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Adding Careers Modal -->
+<div class="modal fade" id="addCareer_modal">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header" style="background:rgb(219, 118, 240)">
+        <h3 class="modal-title">Adding Careers</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div class="form-group">
+              <form action="/changecarrers" method="POST">
+                <div class="form-group">
+                  <label for="carrertitle">New Job:</label>
+                  <input type="text" class="form-control" placeholder="Enter carrer title" id="carrertitle" name="carrertitle">
+                </div>
+                <div class="form-group">
+                  <label for="carrerreq">Requirements:</label>
+                  <textarea type="text" class="form-control" id="carrerreq" name="carrerreq" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="carrerinfo">Additional Info:</label>
+                  <textarea type="text" class="form-control" id="carrerinfo" name="carrerinfo" rows="3"></textarea>
+                </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </form>            
+          </div>  
+      </div>
+    </div>
+  </div>
+</div>  
+  <!-- Adding Images -->
+<div class="modal fade" id="addImage_modal">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header" style="background:rgb(255, 208, 0)">
+        <h3 class="modal-title">Uploading Image</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+            <!-- image upload -->
+            <div class="form-group">
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <input class="form-control-file" type="file" accept="image/*" name="photo">
+                    <input class="btn mt-3" type="submit" value="upload">
+                </form>
+            </div>
+          <!-- end of image upload -->
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- end of Adding Images -->
+<div class="row">
+  <!-- sidebar -->
+  <div class="col-lg-3">
+    <div class="container" style="height: 85vh;width:23vw;position:fixed;left:2vw;top:6vw;background: white;padding:20px;padding-top: 0px;">
+      <a href="/"><img src="/logo.png" alt="" style="width: 8vw;height: 10vw;"></a>
+      <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-user-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(74, 230, 230, 0.849);" aria-hidden="true"></i>Team Members <span class="badge" style="margin-left:20px;background-color:rgba(74, 230, 230, 0.849);color:white;transform:scale(1.25)"><%= teamMembers.length %></span></p>
+      <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-file-text" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(233, 149, 23, 0.849);" aria-hidden="true"></i>Articles <span class="badge" style="margin-left:20px;background-color:rgba(233, 149, 23, 0.849);color:white;transform:scale(1.25)"><%= articles.length %></span></p>
+      <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-briefcase" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(219, 118, 240);" aria-hidden="true"></i>Carrers <span class="badge" style="margin-left:20px;background-color:rgb(219, 118, 240);color:white;transform:scale(1.25)"><% if(carrers.length==0){%>0<%}else{%><%= carrers.length %><%}%></span></p>
+      <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-picture-o" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(255, 208, 0)" aria-hidden="true"></i>Images<span class="badge" style="margin-left:20px;background-color:rgb(255, 208, 0);color:white;transform:scale(1.25)"><%= files.length %></span></p>
+      <!-- images in the server -->
+      <!-- <p style="font-family: 'Ubuntu', sans-serif; font-size:1.8vw;margin-top: 2vw;;">Images in the server</p>
+      <div class="row">
+          <% for(var i=0;i<files.length;i++){ %>
+        <div class="col-lg-3">
+          <a href="/<%= files[i] %>"  data-toggle="tooltip" title="<%= files[i] %>" target="_blank" style="text-decoration: none;color:rgb(65, 90, 42);width:100%;"><i class="fa fa-picture-o" style="font-size: 0.8vw;display: inline;margin-right: 0.5vw;" aria-hidden="true"></i><span style="font-size: 1vw;"><%= i+1 %></span></a>
+        </div>
+        <% } %>
+      </div> -->
+      <div class="row" style="border-top: 1px dotted rgba(0, 0, 0, 0.589);padding-top: 1.5vw;">
+        <!-- <div class="col-lg-1"></div> -->
+        <div class="col-lg-12">
+          <a href="#addMember_modal" style="text-decoration: none;color: black;" data-toggle="modal"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-plus-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(74, 230, 230, 0.849);" aria-hidden="true"></i>Add Team Members</p></a>
+          <a href="#addArticle_modal" style="text-decoration: none;color: black;" data-toggle="modal"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-plus-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(233, 149, 23, 0.849);" aria-hidden="true"></i>Add Articles</p></a>
+          <a href="#addCareer_modal" style="text-decoration: none;color: black;" data-toggle="modal"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-plus-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(219, 118, 240);" aria-hidden="true"></i>Add Careers</p></a>
+          <a href="#addImage_modal" style="text-decoration: none;color: black;" data-toggle="modal"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-plus-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(255, 208, 0)" aria-hidden="true"></i>Add Images</p></a>
+          <a href="/socialmedia" style="text-decoration: none;color: black;"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-share-square" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(255, 208, 0)"></i> Social Media Panel</p></a>
+        </div>
+        <!-- <div class="col-lg-1"></div> -->
+      </div>
+    </div>
+  </div>
+  <!-- end of sidebar -->
+  <!-- forms -->
+  <div class="col-lg-4">
+  <div class="row mt-5">
+      <div class="col-lg-12">
+          <div class="container">
+            <div class="card">
+                <h5 class="card-header" style="background:rgb(63, 235, 11)">Background Colors</h5>
+                <div class="card-body" style="padding: 5px 10px;">
+                    <div class="form-group">
+                        <form action="/colorchange" method="POST" style="padding: 10px;">
+                          <p><span class="badge" style="background-color: <%= colors.navcolor %>;font-size:1.2vw;padding:0.8vw">Navbar:</span>  <input type="color" name="navcolor" value="<%= colors.navcolor %>"></p%>
+                          <p><span class="badge" style="background-color: <%= colors.para1color %>;font-size:1.2vw;padding:0.8vw">Para1:</span>  <input type="color" name="para1color" value="<%= colors.para1color %>"></p>
+                          <p><span class="badge" style="background-color: <%= colors.teamcolor %>;font-size:1.2vw;padding:0.8vw">Team:</span>  <input type="color" name="teamcolor" value="<%= colors.teamcolor %>"></p>
+                          <p><span class="badge" style="background-color: <%= colors.articlescolor %>;font-size:1.2vw;padding:0.8vw">Articles:</span>  <input type="color" name="articlescolor" value="<%= colors.articlescolor %>"></p>
+                          <p><span class="badge" style="background-color: <%= colors.socialcolor %>;font-size:1.2vw;padding:0.8vw">Social:</span>  <input type="color" name="socialcolor" value="<%= colors.socialcolor %>"></p>
+                          <button type="submit" class="btn btn-primary">Submit</button>    
+                        </form>
+                    </div>
+                </div>
+            </div>
+          </div>        
+      </div>
+      <!-- end of background colors -->
+      <div class="col-lg-12 mt-3">
+          <div class="container">
+              <div class="card">
+                  <h5 class="card-header" style="background:rgb(250, 119, 12)">Parent Company</h5>
+                  <div class="card-body" style="padding: 5px 10px;">
+                      <div class="form-group">
+                          <form action="/changeparent" method="POST">
+                            <div class="form-group">
+                              <label for="text">Title:</label>
+                              <input type="text" class="form-control" placeholder="Enter title" name="title" id="text" value="<%= parent.title %>">
+                            </div>
+                            <div class="form-group">
+                              <label for="content">About:</label>
+                              <textarea type="text" class="form-control" id="content" name="content" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <label for="image">Image:</label>
+                              <input type="text" class="form-control" placeholder="Enter image name" name="img" id="img" value="<%= parent.image %>">
+                            </div>
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>              
+                      </div>
+                  </div>
+              </div>
+          </div>      
+      </div>
+      <!-- end of parent company -->
+      <div class="col-lg-12 mt-3">
+          <div class="container">
+              <div class="card">
+                  <h5 class="card-header" style="background:rgba(240, 14, 14, 0.849)">Change Contacts</h5>
+                  <div class="card-body" style="padding: 5px 10px;">
+                      <div class="form-group">
+                          <form action="/changecontact" method="POST">
+                            <div class="form-group">
+                              <label for="contemail">Email:</label>
+                              <input type="text" class="form-control" placeholder="Enter contact email" id="contemail" name="contemail" value="<%= contacts.Email %>">
+                            </div>
+                            <div class="form-group">
+                              <label for="contNum">Number:</label>
+                              <input type="number" class="form-control" placeholder="Enter contact number" id="contNum" name="contNum" value="<%= contacts.Number %>">
+                            </div>
+                            <div class="form-group">
+                              <label for="contwebsite">Website:</label>
+                              <input type="text" class="form-control" placeholder="Enter contact website" id="contwebsite" name="contwebsite" value="<%= contacts.Website %>">
+                            </div>
+                            <div class="form-group">
+                              <label for="contaddress">Address:</label>
+                              <input type="text" class="form-control" placeholder="Enter carrer title" id="contaddress" name="contaddress" value="<%= contacts.Address %>">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+      <div class="col-lg-12 mt-3" style="margin-left:1.25vw;margin-bottom: 2vw;">
+        <!-- <div class="container">
+            <div class="card">
+                <h5 class="card-header" style="background:rgb(219, 118, 240)">Posting Jobs</h5>
+                <div class="card-body" style="padding: 5px 10px;">
+                    <div class="row">
+                        <div class="col-lg-6">
+    
+                        </div>
+                        <div class="col-lg-6">
+                            <% carrers.forEach(function(carrer){ %>
+                              <h5 class="<%= carrer %>"> 
+                                <span class="badge" style="background:rgb(219, 118, 240)"><%= carrer.title %></span>
+                                <a href="#delCareer_modal" data-toggle="modal" style="text-decoration: none;color: black;" data-book-id="<%= carrer.title %>"><i class="fa fa-times" aria-hidden="true"></i></a>                              
+                              </h5>
+                            <% }); %>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <h4 style="color: white;">Existing Jobs</h4>
+        <div class="row pt-3" style="background:rgb(219, 118, 240);height: 100%;padding: 0 5px;">
+            <% carrers.forEach(function(carrer){ %>
+              <h5 class="<%= carrer %>" style="font-size: 1.5vw;"> 
+                <span class="badge" style="background:white;color: black;"><i class="fa fa-briefcase" style="margin-right:1vw;color: rgb(219, 118, 240);" aria-hidden="true"></i><%= carrer.title %></span>
+                <a href="#delCareer_modal" data-toggle="modal" style="text-decoration: none;color: black;" data-book-id="<%= carrer.title %>"><i class="fa fa-times" aria-hidden="true"></i></a>                              
+              </h5>
+            <% }); %>   
+        </div>
+      </div>
+      <div class="col-lg-12 mt-3" id="addMember" style="margin-left:1.25vw;margin-bottom: 2vw;">
+        <h4 style="color: white;">Existing Team Members</h4>
+        <div class="row pt-2" style="background:rgba(74, 230, 230, 0.849);height: 100%;">
+            <% for(var i=0;i<teamMembers.length;i++){ %>
+            <div class="col-lg-4">
+              <div class="card " style="margin-bottom:10px;">
+                <div class="card-header" style="padding: 0 2px;"><i class="fa fa-user-circle" style="margin-right: 1px;color: rgba(74, 230, 230, 0.849);" aria-hidden="true"></i><span onclick="openMember('<%= teamMembers[i].Name %>')"><%= teamMembers[i].Name %></span>
+                  <a href="#delMem_modal" data-toggle="modal" style="text-decoration: none;color: black;" data-book-id="<%= teamMembers[i].Name %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                </div>
+              </div>    
+            </div>
+          <% } %>
+        </div>
+      </div>  
+    <!-- end of add member -->
+    <div class="col-lg-12 mt-3" id="articleDisp" style="margin-left:1.25vw;margin-bottom: 2vw;">
+        <h4 style="color: white;">Existing Articles</h4>
+        <div class="row pt-3" style="background:rgba(233, 149, 23, 0.849);height: 100%;padding: 0 5px;">
+              <% for(var i=0;i<articles.length;i++){ %>
+                  <div class="col-lg-4" style="padding: 0 2px;">
+                    <div class="card" style="margin-bottom:10px;">
+                      <div class="card-header" style="padding: 0 2px;"><i class="fa fa-file-text" style="margin-right: 3px;color: rgba(233, 149, 23, 0.849);" aria-hidden="true"></i><%= articles[i].Name %>
+                        <a href="#delArticle_modal" data-toggle="modal" style="text-decoration: none;color: black;" data-book-id="<%= articles[i].Name %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                    </div>    
+                  </div>
+                <% } %>  
+        </div>
+    </div> 
+      <!-- end of change contacts -->
+    </div>
+  </div>
+  <div class="col-lg-5">
+      <p style="font-size:2.5vw;color: rgb(224, 223, 223);position: fixed;right: 3vw;top: 3vw;"><u>Display & Edit Section</u></p>
+      <button class="btn btn-success" onclick="performEdit()" style="position: fixed;right: 1vw;top:7.8vw;z-index: 1000;">EDIT</button>  
+      <div style="padding:2vw;position: fixed;right: 1vw;bottom: 2vw;height: 80vh;background: white;width:38vw">
+      
+      <div id="showSection"></div>
+    </div>
+  </div>
+  <!-- end of forms -->
+</div>
+<br><br>
+<a href="/logout" class="btn btn-danger" style="display: inline;margin-left: 50vw;">Logout</a>
+<br><br>
+<script src="/js/adminpanel.js"></script>
+<p class="text-center copyright">
+  Copyright &copy;
+  <script>
+    document.write(new Date().getFullYear());
+  </script>
+  All rights reserved . OSOS PVT LTD.
+</p>
+</body>
+</html>

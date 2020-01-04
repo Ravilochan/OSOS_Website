@@ -1,0 +1,203 @@
+* {
+  font-family: "Segoe UI", "Roboto", sans-serif;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+body {
+  background-color: #cdfcd2;
+}
+.social-icons {
+  background: #b6e47a;
+  border-radius: 116px;
+  position: absolute;
+  z-index: 10;
+  left: 95vw;
+  top: 40vh;
+  padding: -10px;
+}
+.social-icons i,.socialmedia-icons i {
+  transform: scale(1.65);
+  color: #666666;
+  display: block;
+  margin: 20px 0;
+}
+.socialmedia-icons{
+  background-color: #b6e47a; 
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.socialmedia-icons li{
+  display: inline-block;
+  font-size: 20px;
+  padding: 20px;
+}
+.nav-item {
+  margin-right: 25px;
+  padding: 10px;
+}
+.nav-link {
+  color: black;
+}
+.nav-item:active {
+  background: #b68dc4;
+  border-radius: 15px;
+}
+.nav-item:hover {
+  transition: 850ms;
+  background: #b68dc4;
+  border-radius: 15px;
+}
+.nav-link:hover {
+  color: white !important;
+}
+.navbar-brand img {
+  /* transform: scale(1.5); */
+  height: 15vh;
+  /* width: 30vh; */
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+}
+.icon-bar {
+  width: 22px;
+  height: 2px;
+  background-color: #b6b6b6;
+  display: block;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+
+.navbar-toggler {
+  border: none;
+  background: transparent !important;
+}
+.navbar-toggler .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+
+.navbar-toggler .middle-bar {
+  opacity: 0;
+}
+
+.navbar-toggler .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+
+.navbar-toggler.collapsed .top-bar {
+  transform: rotate(0);
+}
+
+.navbar-toggler.collapsed .middle-bar {
+  opacity: 1;
+}
+
+.navbar-toggler.collapsed .bottom-bar {
+  transform: rotate(0);
+}
+
+.copyright {
+  background-color: #666666;
+  color: #fff;
+  margin-bottom: 0%;
+}
+#Logo-Tree {
+  margin: 3%;
+  margin-left: -2%;
+}
+.text-intro {
+  text-align: center;
+  margin-top: 40%;
+  margin-left: 10%;
+  font-size: 1.3rem;
+}
+
+#page2 h2 {
+  font-size: 10vh;
+}
+#page2 a {
+  font-size: 1.5rem;
+}
+.heading {
+  font-size: 5rem;
+  font-weight: 400;
+  color: #8adc93;
+}
+.subheading {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #8adc93;
+}
+.job-heading {
+  font-size: 1.8rem;
+}
+.job-items {
+  margin-left: 5%;
+}
+.job-items span {
+  display: block;
+  font-size: 1.2rem;
+}
+
+#page4 {
+  overflow-y: hidden;
+}
+.contact-list {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: 15%;
+  margin-right: -10%;
+}
+.contact-list a {
+  text-decoration: none;
+}
+.location-contact{
+  display: inline-block;
+            margin-left:7.5%;
+            margin-top: -10%;"
+}
+#instafeed img {
+  height: 50vh;
+}
+
+.fb,
+.instagram,
+.twitter {
+  margin: 2%;
+}
+
+.relative-wrap {
+  /*relative on second parent*/
+  position: relative;
+}
+.map img {
+  margin-top: 10%;
+  margin-left: 5%;
+  height: 45vh;
+}
+
+#accordion button {
+  text-decoration: none;
+}
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #242f3f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sk-instagram-feed{
+  margin-top: -6%;
+  margin-bottom: 0%;
+}
+.fb a,.sk-instagram-feed a{
+  display:none;
+}

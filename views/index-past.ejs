@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>OSOS Private Limited</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="icon" href="/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/carousel.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/mobile.css"> 
+  <style>
+  #map {
+        height: 12vw;  /* The height is 400 pixels */
+        width: 80%;  /* The width is the width of the web page */
+    }
+  </style>
+</head>
+<body style="background-color:<%= colors.navcolor %>">
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-md " style="z-index: 100000;">
+        <!-- Brand -->
+            <a class="navbar-brand" href="/"><img src="/logo.png" alt="" style="width:4vw;transform:scale(3.5);margin-left: 3vw;"></a>
+            
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span><i class="fa fa-align-justify" aria-hidden="true"></i>
+            </button>
+            
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" style=" background: #B68DC4;color:white;border-radius:3vw">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/articles">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#">Social</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#">Careers</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- end of navbar -->
+        <div class="social-icons">
+        <div class="card media">
+            <div class="card-body">
+                    <a href="#" style="text-decoration: none;"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" style="text-decoration: none;"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" style="text-decoration: none;"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+            </div>
+        </div></div>
+        <!-- page1 -->
+        <section id="page1" style="background-color:<%= colors.para1color %>">
+            <div class="row">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-5" style="">
+                        <div class="card" id="abtparent" style="margin-top: 50px;box-shadow:0px 10px 30px rgba(49, 47, 47, 0.527);">
+                            <div class="card-body">
+                                <h4 class="card-title" style=""><%= parent.title %></h4>
+                        
+         <p class="card-text" style="margin-bottom: 0px;"><%= parent.content %></p>
+                                
+                            </div>
+                        </div>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-6 col-6" style="position: relative;">
+                        <img id="osos1" src="/img/clogo1.png" alt="companyid" style="">
+                        <div class="row"><div class="col-sm-12">
+                        <img src="/<%= parent.image %>" id="img1" alt="image1" style="">  
+                    </div> </div>
+                </div>
+                <div class="col-lg-1 col-md-12 col-sm-6 col-12 col-social" style="position: absolute;">
+                </div>
+            </div>
+        </section>
+        <!-- end of page1 -->
+        <!-- page2  -->
+        <section id="page2" style="position: relative;padding-bottom: 80px;background-color:<%= colors.teamcolor %>">
+            <p class="fparas">Our Team</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="card" style="">
+                                <div class="row">
+                                    
+                                    <div class="col-lg-4">
+                                        <img class="card-img-top" src="/img/img2.jpg" alt="Card image" style="">
+                                        <div class="icons">
+                                            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                            <i class="fa fa-twitter-square" aria-hidden="true"></i>     
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>   
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 teamdet">
+                                            <h5>Rahul Saxena</h5> 
+                                            <p style="color: rgba(128, 128, 128, 0.671);">Team Lead</p>
+                                            <p style="color: #2c2b2b;font-size: 11px;" class="memInfo">
+                                                 Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                                            </p>   
+                                    </div>
+                                </div>                   
+                            </div>                    
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="card" style="">
+                                <div class="row">
+                                    <div class="col-lg-2"></div>
+                                    <div class="col-lg-4">
+                                        <img class="card-img-top" src="/img/img5.jpeg" alt="Card image" style="">
+                                        <div class="icons">
+                                            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                            <i class="fa fa-twitter-square" aria-hidden="true"></i>     
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>   
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 teamdet">
+                                            <h5>Disha Agarwael</h5> 
+                                            <p style="color: rgba(128, 128, 128, 0.671);">Team Lead</p>
+                                            <p style="color: #2c2b2b;font-size: 11px;" class="memInfo">
+                                                    Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                                            </p>   
+                                    </div>
+                                </div>                   
+                            </div>      
+                    </div>
+                </div> 
+                <br>
+                <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-md-6 col-12">
+                                <div class="card" style="">
+                                    <div class="row">
+                                       
+                                        <div class="col-lg-4 col-12 col-sm-12">
+                                            <img class="card-img-top" src="/img/img3.jpeg" alt="Card image" style="">
+                                            <div class="icons">
+                                                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                                <i class="fa fa-twitter-square" aria-hidden="true"></i>     
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>   
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 teamdet">
+                                                <h5>Ankit Khandelwal</h5> 
+                                                <p style="color: rgba(128, 128, 128, 0.671);">Design Lead</p>
+                                                <p style="color: #2c2b2b;font-size: 11px;" class="memInfo" >
+                                                     Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                                                </p>   
+                                        </div>
+                                    </div>                   
+                                </div>                    
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="card" style="">
+                                    <div class="row">
+                                        <div class="col-lg-2"></div>
+                                        <div class="col-lg-4">
+                                            <img class="card-img-top" src="/img/img4.jpeg" alt="Card image" style="">
+                                            <div class="icons">
+                                                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                                <i class="fa fa-twitter-square" aria-hidden="true"></i>     
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>   
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 teamdet">
+                                                <h5>Ananya Bhatt</h5> 
+                                                <p style="color: rgba(128, 128, 128, 0.671);">HR Manager</p>
+                                                <p style="color: #2c2b2b;font-size: 11px;" class="memInfo">
+                                                        Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                                                </p>   
+                                        </div>
+                                    </div>                   
+                                </div>      
+                        </div>
+                </div>           
+            </div>
+        </section>
+        <!-- end of page2 -->
+
+<!-- page 3-->
+<section id="page4" style="position: relative; padding-bottom: 50px;background-color:<%= colors.articlescolor %>">
+    <p class="fparassocial" style="">Featured Articles</p>
+    <div id="demo1" class="carousel slide container" data-ride="carousel">
+
+    <!-- Indicators -->
+    <!-- <ul class="carousel-indicators">
+        <li data-target="#demo1" data-slide-to="0" class="active"></li>
+        <li data-target="#demo1" data-slide-to="1"></li>
+    </ul> -->
+    
+    <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                    <div class="row"> 
+                        <% 
+                 articles.forEach(function(article){ %> 
+                    
+                        <div class="col-md-4 col-lg-4 col-sm-4 col-12 side">
+                            
+                                 <div class="card">
+                                <div class="card-img-top card-img-top-250">
+                                 <img class="img-fluid" src="<%= article.Image %>" alt="Carousel 1">
+                                </div>
+                                <div class="card-block p-t-2" style="padding:10px;">
+                                    <h6><%= article.Name %></h6>
+                                    <p style="font-size: 10px;">
+                                        <%= article.Info %>
+                                    </p>
+                                </div>
+                            </div>
+                          
+                        </div>  <% }); %>
+                    </div>
+            </div>
+
+
+            <div class="carousel-item">
+                    <div class="row">
+                            <div class="col-md-4 col-lg-4 col-sm-4 col-12 side">
+                                <div class="card">
+                                    <div class="card-img-top card-img-top-250">
+                                        <img class="img-fluid" src="/img/tech5.jpeg" alt="Carousel 5">
+                                    </div>
+                                    <div class="card-block p-t-2" style="padding:10px;">
+                                        <h6>Article 4</h6>
+                                        <p style="font-size: 10px;">
+                            If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-sm-4 col-12 mid">
+                                <div class="card">
+                                    <div class="card-img-top card-img-top-250">
+                                        <img class="img-fluid" src="/img/tech6.jpeg" alt="Carousel 5">
+                                    </div>
+                                    <div class="card-block p-t-2" style="padding:10px;">
+                                        <h6>Article 5</h6>
+                                        <p style="font-size: 10px;">
+                            If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-sm-4 col-12 side">
+                                <div class="card">
+                                    <div class="card-img-top card-img-top-250">
+                                        <img class="img-fluid" src="/img/tech7.jpeg" alt="Carousel 5">
+                                    </div>
+                                    <div class="card-block p-t-2" style="padding:10px;">
+                                        <h6> Article 6</h6>
+                                        <p style="font-size: 10px;">
+                            If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+        </div>
+        
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo1" data-slide="prev" style="margin-left: -8vw;">
+            <i class="fa fa-chevron-circle-left" style="color: white;" aria-hidden="true"></i>
+        </a>
+        <a class="carousel-control-next" href="#demo1" data-slide="next" style="margin-right: -8vw;">
+            <i class="fa fa-chevron-circle-right" style="color: white;" aria-hidden="true"></i>
+        </a>
+    </div>
+</section>
+<!-- end of page3 -->
+
+<!-- duplicate hidden -->
+<!-- page 3-->
+<section id="page"style="position: relative; padding-bottom: 50px;background-color:<%= colors.articlescolor %>">
+    <p class="fparassocial" style="">Featured Articles</p>
+    <div id="demo1" class="carousel slide container" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                    <div class="row"> 
+                   
+        <div class="col-12">
+                            
+                                 <div class="card">
+                                <div class="card-img-top card-img-top-250">
+                                 <img class="img-fluid" src="<%= articles[0].Image %>" alt="Carousel 1">
+                                </div>
+                                <div class="card-block p-t-2" style="padding:10px;">
+                                    <h6><%= articles[0].Name %></h6>
+                                    <p style="font-size: 10px;">
+                                        <%= articles[0].Info %>
+                                    </p>
+                                </div>
+                                <!-- <a href="#" style="position: relative; left: 70%; top: -5%"> See More</a> -->
+                            </div>
+                         </div>  
+                         <a href="#" style="position: relative; left: 70%; top:0.9vh"> See More</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end of page3 -->
+
+<!-- end of hidden -->
+        
+
+
+<!-- carousal slide 2 -->
+                        <div class="carousel-item">
+                                <div class="row">
+                                        <div class="col-md-4 col-lg-4 col-sm-4 col-12 side">
+                                            <div class="card">
+                                                <div class="card-img-top card-img-top-250">
+                                                    <img class="img-fluid" src="/img/tech5.jpeg" alt="Carousel 5">
+                                                </div>
+                                                <div class="card-block p-t-2" style="padding:10px;">
+                                                    <h6>Article 4</h6>
+                                                    <p style="font-size: 10px;">
+                                        If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. 
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-lg-4 col-sm-4 col-12 mid">
+                                            <div class="card">
+                                                <div class="card-img-top card-img-top-250">
+                                                    <img class="img-fluid" src="/img/tech6.jpeg" alt="Carousel 5">
+                                                </div>
+                                                <div class="card-block p-t-2" style="padding:10px;">
+                                                    <h6>Article 5</h6>
+                                                    <p style="font-size: 10px;">
+                                        If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. 
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-lg-4 col-sm-4 col-12 side">
+                                            <div class="card">
+                                                <div class="card-img-top card-img-top-250">
+                                                    <img class="img-fluid" src="/img/tech7.jpeg" alt="Carousel 5">
+                                                </div>
+                                                <div class="card-block p-t-2" style="padding:10px;">
+                                                    <h6> Article 6</h6>
+                                                    <p style="font-size: 10px;">
+                                        If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. 
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#demo1" data-slide="prev" style="margin-left: -8vw;">
+                        <i class="fa fa-chevron-circle-left" style="color: white;" aria-hidden="true"></i>
+                    </a>
+                    <a class="carousel-control-next" href="#demo1" data-slide="next" style="margin-right: -8vw;">
+                        <i class="fa fa-chevron-circle-right" style="color: white;" aria-hidden="true"></i>
+                    </a>
+                </div>
+        </section>
+        <!-- end of page4 -->
+
+<!--page 5-->
+<!-- <section id="page5" class="xop-section">
+    <div class="xop-wrapper">
+        <div class="xop-container">
+            <a class="project" href="#">
+                <figure>
+                    <img src="/img/tech2.jpeg" alt="Post 1">
+                    <figcaption>
+                        <div>
+                            <h3> Post 1</h3>
+                            <p class="cta">View post</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </a>
+            <a class="project" href="#">
+                <figure>
+                    <img src="/img/tech3.jpeg" alt="Post 2" title="Post 2">
+                    <figcaption>
+                        <div>
+                            <h3>Post 2</h3>
+                            <p class="cta">View post</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </a>
+             <a class="project" href="#">
+                <figure>
+                    <img src="/img/tech4.jpeg" alt="post 3" title="Post 3">
+                    <figcaption>
+                        <div>
+                            <h3>Post 3</h3>
+                            <p class="cta">View post</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </a>
+             <a class="project" href="#">
+                <figure>
+                    <img src="/img/tech5.jpeg" alt="Post 4" title="Post 4">
+                    <figcaption>
+                        <div>
+                            <h3>Post 4</h3>
+                            <p class="cta">View Post</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </a>
+            <a class="project" href="#">
+                <figure>
+                    <img src="/img/tech2.jpeg" alt="Post 5" title="Post 5">
+                    <figcaption>
+                        <div>
+                            <h3>Post 5</h3>
+                            <p class="cta">View post</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </a>
+            <a class="project" href="#">
+                <figure>
+                    <img src="/img/tech1.jpeg" alt="Post 6" title="Post 6">
+                    <figcaption>
+                        <div>
+                            <h3>Post 6</h3>
+                            <p class="cta">View post</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </a>
+            <a class="project" href="#">
+                <figure>
+                    <img src="/img/tech7.jpeg" alt="Post 7" title="Post 7">
+                    <figcaption>
+                        <div>
+                            <h3>Post 7</h3>
+                            <p class="cta">View post</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </a>
+        </div>
+    </div>
+</section>  -->
+<!-- Flexbox-->
+<!-- <div class="container">
+  <div class="flex-container">
+      <div class="flex-grow:12">
+        <img style="width:100%;height: auto;" src="/img/tech3.jpeg" alt="Post 2" title="Post 2">
+      </div>
+  </div>
+  <div class="flex-container">
+    <div class="flex-grow:8">
+        <img style="width:100%;height: auto;" src="/img/tech3.jpeg" alt="Post 2" title="Post 2">
+      </div>
+    <div style="flex-grow: 4">
+      <div class="flex-container">
+        <div style="flex-grow: 12">three</div>
+      </div>
+      <div class="flex-container">
+        <div style="flex-grow: 12">three</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-container">
+    <div style="flex-grow: 12">fourth</div>
+  </div>
+</div> -->
+<div class="container mt-3 mb-3">
+    <div class="row">
+        <div class="col-12">
+            <img style="width:100%; height: 50vh;" src="/img/tech3.jpeg" alt="Post 2" title="Post 2">
+        </div>
+    </div>       
+    <br> 
+    <div class="row">
+        <div class="col-8">
+            <img style="width:100%; height: 30vh;" src="/img/tech6.jpeg" alt="Post 2" title="Post 2">
+        </div>
+        <div class="col-4">
+          <div class="row">
+              <div class="col-12">
+                <img style="width:100%; height: 15vh; margin-bottom: 0.2vw; margin-left:-1vh" src="/img/tech1.jpeg" alt="Post 2" title="Post 2">
+              </div>
+              <br>
+              <div class="col-12">
+                <img style="width:100%; height: 15vh; margin-left:-1vh " src="/img/tech4.jpeg" alt="Post 2" title="Post 2">
+              </div>
+          </div>  
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <img style="width:100%; height: 30vh;" src="/img/tech5.jpeg" alt="Post 2" title="Post 2">
+        </div>
+    </div>
+</div>
+<!--page5 ends-->
+        <footer>
+            <div class="row">
+                <div class="col-lg-4 col-12 col-sm-4">
+                    <h5>Carrers</h5>
+                    <div class="rs">
+                        <h6 style="font-weight: light;color: rgba(255, 255, 255, 0.774);text-align: center;margin-top: 20px;">Current Openings</h6>
+                        <span class="carrers">
+                            <% carrers.forEach(function(carrer){ %>
+                                <a href="#"><%= carrer.title %></a>
+                            <% }); %>
+                        </span>
+                    </div>
+                </div> 
+                <div class="col-lg-4 col-12 col-sm-4 contact">
+                    <h5>Contact</h5>
+                    <div class="rs rs1" style="padding-top:20px">
+                        <a href="#"><i class="fa fa-envelope-o" style="" aria-hidden="true"></i>  <%= contacts.Email %></a>
+                        <a href="#"><i class="fa fa-phone" aria-hidden="true" style=""></i> <%= contacts.Number %></a>
+                        <a href="#"><i class="fa fa-ellipsis-h" aria-hidden="true" style=""></i> <%= contacts.Website %></a>
+                        <a href="#" style=""><i class="fa fa-map-marker" aria-hidden="true" style="transform: scale(1.3);padding-right: 15px;"></i><%= contacts.Address %></a>
+                    </div>
+                </div> 
+                <div class="col-lg-4 col-12 col-sm-4">
+                    <h5>We are at</h5>
+                    <div id="map"></div>
+                </div> 
+            </div>
+        </footer>
+        <script>
+            // Initialize and add the map
+            function initMap() {
+                // The location of Uluru
+                var uluru = {lat: 17.407913, lng: 78.4436417};
+                // The map, centered at Uluru
+                var map = new google.maps.Map(
+                    document.getElementById('map'), {zoom: 15, center: uluru});
+                // The marker, positioned at Ulurutitle: 'Golden Gate Bridge'
+                var marker = new google.maps.Marker({position: uluru, map: map,title: 'OSOS Private Limited'});
+                google.maps.event.addListener(marker, 'click', function() {
+                window.location.href = 'http://maps.google.com/?q=17.407913,78.4436417';
+                });
+            }
+           
+        </script>
+        <!--Load the API from the specified URL
+        * The async attribute allows the browser to render the page while the API loads
+        * The key parameter will contain your own API key (which is not needed for this tutorial)
+        * The callback parameter executes the initMap() function
+        -->
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0S6AJHOR8R6VnvW7t8wCk12behZ3wdMY&callback=initMap">
+        </script>
+        <script>
+                $('#demo').carousel({
+                    interval: 3000
+                });
+                $('#demo1').carousel({
+                    interval: 2000
+                });
+        </script>        
+</body>
+</html>

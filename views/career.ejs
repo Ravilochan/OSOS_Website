@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Work with us</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/css-style.css" />
+    <link rel="stylesheet" href="/css/css-mobile.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+      <!-- Brand -->
+      <a class="navbar-brand" href="/"
+        ><img src="/logo-zommed.png" alt="Logo"
+      /></a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <!-- <div class="animated-icon1">
+          <span></span><span></span><span></span>
+        </div> -->
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/social">Social</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/career">Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- end of navbar -->
+    <div class="social-icons">
+      <div class="card-body">
+        <a
+          href="https://twitter.com/Spaarks_Smiles"
+          style="text-decoration: none;"
+          ><i class="fa fa-twitter" aria-hidden="true"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/spaarks_smiles/"
+          style="text-decoration: none;"
+          ><i class="fa fa-instagram" aria-hidden="true"></i
+        ></a>
+        <a
+          href="https://www.facebook.com/Spaarks-103412397844392/"
+          style="text-decoration: none;"
+          ><i class="fa fa-facebook-official" aria-hidden="true"></i
+        ></a>
+        <a
+          href="https://www.quora.com/profile/Spaarks"
+          style="text-decoration: none;"
+          ><i class="fa fa-quora" aria-hidden="true"></i
+        ></a>
+      </div>
+    </div>
+    <!-- page -->
+    <div class="container" id="page2">
+      <div class="text-center heading">Are You Awesome ?</div>
+      <div class="text-center subheading">Work with us</div>
+      <div class="row">
+        <!-- <div class="col-md-7 col-lg-7 col-12 career">
+          <div class="job-heading">Current Openings</div>
+          <div class="job-items">
+            <% carrers.forEach(function(carrer){ %>
+            <a href="#"><%= carrer.title %></a>
+            <span> Roles & Responsibilites </span>
+            <p><%= carrer.requirements %></p>
+            <p><%= carrer.addinfo %></p>
+            <% }); %>
+          </div>
+        </div> -->
+        <!-- toggle -->
+        <div class="col-md-6 col-lg-6 col-12 career">
+          <div class="job-heading">Current Openings</div>
+          <br />
+          <div id="accordion">
+            <% carrers.forEach(function(carrer){ var i='#'+carrer.title; %>
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button
+                    class="btn btn-link"
+                    data-toggle="collapse"
+                    data-target="#one"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    <%= carrer.title %>
+                  </button>
+                </h5>
+              </div>
+
+              <div
+                id="one"
+                class="collapse show"
+                aria-labelledby="headingOne"
+                data-parent="#accordion"
+              >
+                <div class="card-body">
+                  <%= carrer.requirements %> <br /><br />
+                  <%= carrer.addinfo %>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+        <!-- end of toggle -->
+        <div id="career-page" class="col-md-5 col-lg-5 col-12 container">
+          <!-- <div class="text-center subheading">Apply Here</div>-->
+          <span><%= typeof msg != 'undefined' ? msg : '' %></span>
+          <form
+            action="/uploadresume"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="form-row">
+              <div class="col-md-5 mb-3">
+                <label>First name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Firstname"
+                  required
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label>Last name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="Lastname"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-11 mb-3">
+                <label>E-Mail</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Position</label>
+              <select class="custom-select" name="Position" required>
+                <option value="">Select Postion you are applying to</option>
+                <% carrers.forEach(function(carrer){ %>
+                <option value="<%= carrer.title %>"><%= carrer.title %></option>
+                <% }); %>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>&nbsp Tell Us something </label>
+              <textarea
+                class="form-control"
+                name="coverletter"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="form-row" style="margin:2% 0%;">
+              <input type="file" name="Resume" required />
+              <!-- <label class="custom-file-label">
+                  Upload your Resume
+                </label> -->
+            </div>
+
+            <div class="form-group">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="invalidCheck"
+                  required
+                />
+                <label class="form-check-label" for="invalidCheck" required>
+                  Agree to terms and conditions
+                </label>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end of page -->
+    <br /><br />
+    <p class="text-center copyright">
+      Copyright &copy;
+      <script>
+        document.write(new Date().getFullYear());
+      </script>
+      All rights reserved . OSOS PVT LTD.
+    </p>
+  </body>
+  <script>
+    $(document).ready(function() {
+      $(".first-button").on("click", function() {
+        $(".animated-icon1").toggleClass("open");
+      });
+    });
+  </script>
+</html>

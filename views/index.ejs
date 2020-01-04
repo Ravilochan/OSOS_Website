@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OSOS Private Limited</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/css-style.css" />
+    <link rel="stylesheet" href="/css/css-mobile.css" />
+  </head>
+  <style>
+  </style>
+  <body>
+    <div class="loader-wrapper">
+      <div class="spinner-grow text-success" style="width: 3rem; height: 3rem;" role="status">
+        
+      </div>
+  </div>
+   
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+      <!-- Brand -->
+      <a class="navbar-brand" href="/"
+        ><img src="/logo-zommed.png" alt="Logo"
+      /></a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <!-- <div class="animated-icon1">
+          <span></span><span></span><span></span>
+        </div> -->
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/social">Social</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/career">Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- end of navbar -->
+    <div class="social-icons">
+      <div class="card-body">
+        <a
+          href="https://twitter.com/Spaarks_Smiles"
+          style="text-decoration: none;"
+          ><i class="fa fa-twitter" aria-hidden="true"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/spaarks_smiles/"
+          style="text-decoration: none;"
+          ><i class="fa fa-instagram" aria-hidden="true"></i
+        ></a>
+        <a
+          href="https://www.facebook.com/Spaarks-103412397844392/"
+          style="text-decoration: none;"
+          ><i class="fa fa-facebook-official" aria-hidden="true"></i
+        ></a>
+        <a
+          href="https://www.quora.com/profile/Spaarks"
+          style="text-decoration: none;"
+          ><i class="fa fa-quora" aria-hidden="true"></i
+        ></a>
+      </div>
+    </div>
+    <!-- page1 -->
+    <div class="container" id="page1">
+      <div class="row">
+        <div class="col-md-5 col-12 ">
+          <p class="text-intro">
+            <%= parent.content %>
+          </p>
+        </div>
+        <div class="col-md-7 col-12">
+          <img src="/Group.svg" id="Logo-Tree" alt="Logo-Tree" />
+        </div>
+      </div>
+    </div>
+    <!-- end of page1 -->
+    <!-- Page 2 -->
+    <br />
+    <section id="page2"></section>
+    <!-- ending of Page 2 -->
+    <!-- Page 3 -->
+    <section id="page3">
+      <div class="container" id="page2">
+        <div class="text-center heading">Are You Awesome ?</div>
+        <div class="text-center subheading">Work with us</div><br>
+        <div class="row">
+          <div class="col-12 text-career">
+          <p>We are working on the future of social networking and its transformation to a more relevant platform by utilizing the most cutting-edge tools and technologies. Our product is focused on providing innovative and unique services to all mobile internet users globally through our mobile application. We believe product differentiation is critical to success. We are building a simple yet luxurious product. Our mobile application uses simple features in a way that it brings value proposition to our users. We encourage skilled and hardworking talent to work with us and grow along while building the exceptionally scalable product from scratch. We integrate honesty, ethics, and equality into all aspects of our operations. If you tug the heart with your business, it is a good business.</p>
+        </div></div>
+        <div class="row">
+          <div class="col-md-7 col-lg-7 col-12 career">
+            <div class="job-heading">Current Openings</div>
+            <div class="job-items">
+              <% carrers.forEach(function(carrer){ %>
+              <a href="#"><%= carrer.title %></a>
+              <span> Roles & Responsibilites </span>
+              <p><%= carrer.requirements %></p>
+              <p><%= carrer.addinfo %></p>
+              <% }); %>
+            </div>
+          </div>
+
+          <div id="career-page" class="col-md-5 col-lg-5 col-12 container">
+            <!-- <div class="text-center subheading">Apply Here</div>-->
+            <span><%= typeof msg != 'undefined' ? msg : '' %></span>
+            <form
+              action="/uploadresume"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <div class="form-row">
+                <div class="col-md-5 mb-3">
+                  <label>First name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="Firstname"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label>Last name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="Lastname"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-11 mb-3">
+                  <label>E-Mail</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Position</label>
+                <select class="custom-select" name="Position" required>
+                  <option value="">Select Postion you are applying to</option>
+                  <% carrers.forEach(function(carrer){ %>
+                  <option value="<%= carrer.title %>"
+                    ><%= carrer.title %></option
+                  >
+                  <% }); %>
+                </select>
+              </div>
+              <div class="form-row">
+                <label>&nbsp Tell Us something </label>
+                <textarea
+                  class="form-control"
+                  name="coverletter"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="form-row" style="margin:2% 0%;">
+                <input type="file" name="Resume" required />
+                <!-- <label class="custom-file-label">
+                    Upload your Resume
+                  </label> -->
+              </div>
+
+              <div class="form-group">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="invalidCheck"
+                    required
+                  />
+                  <label class="form-check-label" for="invalidCheck" required>
+                    Agree to terms and conditions
+                  </label>
+                </div>
+              </div>
+              <button class="btn btn-primary" type="submit">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Ending of Page3  -->
+    <!-- Page 4 -->
+    <br />
+    <div class="container" id="page4">
+      <div class="row">
+        <div class="col-md-5 col-lg-5 col-12">
+          <div class="contact-list justify-content">
+            <img src="/img/mail.png" alt="Mail_icon" />
+            <a style="display:block;
+            margin-left: 18%;
+            margin-top: -12%;" href="mailto:<%=contacts.Email %>"><%=contacts.Email %></a>
+          </div>
+          <div class="contact-list">
+            <img src="/img/call.png" alt="Phone_icon" />
+            <a style="margin-left: -1%;" href="tel:<%=contacts.Number %>"><%=contacts.Number %></a>
+          </div>
+          <div class="contact-list">
+            <img src="/img/web.png" alt="Website_icon" />
+            <a href="<%=contacts.Website %>">&nbsp;<%=contacts.Website %></a>
+          </div>
+          <div class="contact-list">
+            <img src="/img/location.png" alt="Location_icon"/>
+            <a style="display: inline-block;
+            margin-left: 15%;
+            margin-top: -18%;"
+              href="https://www.google.com/maps/dir//17.4079419,78.4437435/@17.407942,78.443743,16z?hl=en"
+              ><br />OSOS Pvt. Ltd. Floor No. 1, 2 #1731, Rd Number 12, Sri Ram
+              Nagar Colony, Banjara Hills, Hyderabad, Telangana - 500021</a style="margin-left: 20%;"
+            >
+          </div>
+        </div>
+        <div class="col-md-7 col-lg-7 col-12">
+          <div class="relative-wrap" style="max-width: width none;!important;
+          position: absolute; left:500px;">
+    
+            <div class="overflow-wrap">
+                
+                <div class="respect-overflow">
+                  <div id="map"></div>
+                </div>
+                <div class="no-overflow">
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="col-md-7 col-12 map">
+          <a 
+            href="https://www.google.com/maps/dir//OSOS+Pvt.+Ltd.+Floor+No.+1,+2+1731,+Rd+Number+12,+Sri+Ram+Nagar+Colony,+Banjara+Hills,+Hyderabad,+Telangana+500021/"
+            ><img
+              src="https://maps.googleapis.com/maps/api/staticmap?center=OSOS+Pvt.+Ltd.+Floor+No.+1,+2+1731,+Rd+Number+12,+Sri+Ram+Nagar+Colony,+Banjara+Hills,+Hyderabad,+Telangana+500021&zoom=15&scale=1&size=600x300&maptype=roadmap&key=AIzaSyD0S6AJHOR8R6VnvW7t8wCk12behZ3wdMY&format=png&visual_refresh=true&markers=icon:https://www.google.com/maps/dir//17.4079419,78.4437435/@17.407942,78.443743,16z/data=!4m2!4m1!3e0?hl=en%7Cshadow:true%7COSOS+Pvt.+Ltd.+Floor+No.+1,+2+1731,+Rd+Number+12,+Sri+Ram+Nagar+Colony,+Banjara+Hills,+Hyderabad,+Telangana+500021&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7COSOS+Pvt.+Ltd.+Floor+No.+1,+2+1731,+Rd+Number+12,+Sri+Ram+Nagar+Colony,+Banjara+Hills,+Hyderabad,+Telangana+500021"
+              alt="Google Map of OSOS Pvt. Ltd. Floor No. 1, 2 1731, Rd Number 12, Sri Ram Nagar Colony, Banjara Hills, Hyderabad, Telangana 500021"
+          /></a>
+        </div>
+         
+        </div>
+      </div>
+    </div>
+    <!-- Ending of Page4 -->
+    <!-- Mobile Footer -->
+    <section id="mobile-footer">
+      <p class="text-center mobile-cr">
+        Copyright &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        All rights reserved . OSOS Private LTD.
+      </p>
+    </section>
+    <!-- Mobile Footer ending -->
+    <!-- Footer -->
+    <p class="text-center copyright">
+      Copyright &copy;
+      <script>
+        document.write(new Date().getFullYear());
+      </script>
+      All rights reserved . OSOS PVT LTD.
+    </p>
+    <!-- Foooter ending -->
+  </body>
+  <script>
+    $(document).ready(function() {
+      $(".first-button").on("click", function() {
+        $(".animated-icon1").toggleClass("open");
+      });
+    });
+    $(window).on("load",function(){
+     $(".loader-wrapper").fadeOut("slow");
+});
+  </script>
+  <!--Load the API from the specified URL
+        * The async attribute allows the browser to render the page while the API loads
+        * The key parameter will contain your own API key (which is not needed for this tutorial)
+        * The callback parameter executes the initMap() function
+        -->
+  <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0S6AJHOR8R6VnvW7t8wCk12behZ3wdMY&callback=initMap"
+  ></script>
+  <style>
+      @media only screen and (min-width: 992px) {
+    #page2,
+    #page3,
+    #page4,
+    #mobile-footer {
+      display: none;
+    }
+  </style>
+</html>

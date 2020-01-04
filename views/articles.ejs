@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Articles</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="icon" href="/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/carousel.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/mobile.css"> 
+  <link href="https://fonts.googleapis.com/css?family=Gupter|Solway|Ubuntu&display=swap" rel="stylesheet">
+  <style>
+    *{
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .articlex{
+      width:60vw;
+      min-height: 40vh;
+      height: 100%;
+      background: white;
+      margin:0 auto;
+      margin-bottom: 3vw;
+      box-shadow: 8px 8px 10px rgba(121, 120, 120, 0.925);  
+    }
+    .articlex h3{
+        color: grey;
+    }
+    .articlexh{
+        color:rgb(59, 59, 59);position: absolute;font-size: 70px;letter-spacing:1px;font-weight:600;left: 50px;top:-55px
+    }
+  .imgarticlex{
+      float: right;
+      width: 45vw;
+      height: 48vh;
+      margin-top: -13vh;
+      margin-right: -8vw;
+      box-shadow: 4px 4px 6px rgba(121, 120, 120, 0.925);
+      /* transform: scale(1.2); */
+      /* transform: translateX(3vw); */
+      /* transform: translateY(-10vh); */
+      /* padding: 2vw;
+      border: 1px solid black; */
+    }
+  </style>
+</head>
+<body style="background: <%= colors.articlescolor %>">
+   
+    <div style="height: 10vw;background: <%= colors.navcolor %>;">
+         <!-- navbar -->
+            <nav class="navbar navbar-expand-md " style="z-index: 100000;background: <%= colors.navcolor %>">
+                    <!-- Brand -->
+                        <a class="navbar-brand" href="/"><img src="/logo.png" alt="" style="width:4vw;transform:scale(3.5);margin-left: 3vw;"></a>
+                        
+                        <!-- Toggler/collapsibe Button -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                            <span class="navbar-toggler-icon"></span><i class="fa fa-align-justify" aria-hidden="true"></i>
+                        </button>
+                        
+                        <!-- Navbar links -->
+                        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/team">Team</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/articles" style=" background: #B68DC4;color:white;border-radius:3vw">Articles</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="#">Social</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="#">Careers</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="#">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                </nav>
+                <!-- end of navbar -->
+                <!-- <p id="articlexh">Featuring Articles</p> -->
+    </div>
+
+    <div class="container" style="margin-top: 8vw;">
+        <% for(var i=0;i<articles.length;i++){ %>
+            <div class="card articlex">
+                <div class="card-body">
+                    <h3><%=articles[i].Name %></h3>
+                   <p> <img src="/<%=articles[i].Image %>" class="imgarticlex" alt=""><%=articles[i].Info %></p>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
