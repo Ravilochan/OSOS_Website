@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="/logo.png" />
+    <link rel="icon" href="/img/logo.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -29,7 +29,7 @@
     <nav class="navbar navbar-expand-lg bg-light">
       <!-- Brand -->
       <a class="navbar-brand" href="/"
-        ><img src="/logo-zommed.png" alt="Logo"
+        ><img src="/img/logo-zommed.png" alt="Logo"
       /></a>
 
       <!-- Toggler/collapsibe Button -->
@@ -54,6 +54,9 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blogs/1">SpaarksBytes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/social">Social</a>
@@ -96,6 +99,19 @@
     <div class="container" id="page2">
       <div class="text-center heading">Are You Awesome ?</div>
       <div class="text-center subheading">Work with us</div>
+      <div class="text-center career-intro">
+        <p>
+          We love to accumulate talent and make this company talent based. Our
+          world is what we make of it. We also highly encourage freshers who
+          have skills but face challenges in finding initial opportunities due
+          to no prior work experience. Any fresher who can show proficiency in
+          her/his skills is encouraged to apply. For us expertise and experience
+          are two different things.
+        </p>
+        <p class="font-weight-bold">
+          Spread your awesomeness. Come work with us.
+        </p>
+      </div>
       <div class="row">
         <!-- <div class="col-md-7 col-lg-7 col-12 career">
           <div class="job-heading">Current Openings</div>
@@ -121,7 +137,7 @@
                     class="btn btn-link"
                     data-toggle="collapse"
                     data-target="#one"
-                    aria-expanded="true"
+                    aria-expanded="false"
                     aria-controls="collapseOne"
                   >
                     <%= carrer.title %>
@@ -131,7 +147,7 @@
 
               <div
                 id="one"
-                class="collapse show"
+                class="collapse"
                 aria-labelledby="headingOne"
                 data-parent="#accordion"
               >

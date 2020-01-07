@@ -3,7 +3,7 @@
 <head>
   <title>Admin Panel</title>
   <meta charset="utf-8">
-  <link rel="icon" href="/logo.png">
+  <link rel="icon" href="/img/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -42,7 +42,7 @@
 <body>
 
 <h2 style="color: white;text-align: center;font-size: 40px;font-weight: 600;font-family: 'Gupter', serif;position:relative">
-WELCOME TO THE ADMIN PANEL<i class="fa fa-cog fa-spin fa-fw" style="font-size:2.5vw;"></i><i class="fa fa-cog fa-spin fa-fw" style="font-size:2vw;"></i>
+WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size:2.5vw;"></i><i class="fa fa-cog fa-spin fa-fw" style="font-size:2vw;"></i>
 </h2>
 
 <!--   -->
@@ -182,7 +182,23 @@ WELCOME TO THE ADMIN PANEL<i class="fa fa-cog fa-spin fa-fw" style="font-size:2.
                 </div>
                 <div class="form-group">
                   <label for="articleInfo">Article Info:</label>
-                  <textarea type="text" class="form-control" placeholder="Enter position" id="articleInfo" name="articleInfo"></textarea>
+                  <textarea type="text" class="form-control" placeholder="Enter Intro Para" id="articleInfo" name="articleInfo"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="articleInfo">Article Info:</label>
+                  <textarea type="text" class="form-control" placeholder="Enter Para 1" id="articleInfo1" name="articleInfo1"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="articleInfo">Article Info:</label>
+                  <textarea type="text" class="form-control" placeholder="Enter Para 2" id="articleInfo2" name="articleInfo2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="articleInfo">Article Info:</label>
+                  <textarea type="text" class="form-control" placeholder="Enter Conclusion Para " id="articleInfo3" name="articleInfo3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="articleInfo">Article Date:</label>
+                  <textarea type="text" class="form-control" placeholder="Enter Date " id="articledate" name="articledate"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="articleImg">Article Image:</label>
@@ -259,7 +275,7 @@ WELCOME TO THE ADMIN PANEL<i class="fa fa-cog fa-spin fa-fw" style="font-size:2.
   <!-- sidebar -->
   <div class="col-lg-3">
     <div class="container" style="height: 85vh;width:23vw;position:fixed;left:2vw;top:6vw;background: white;padding:20px;padding-top: 0px;">
-      <a href="/"><img src="/logo.png" alt="" style="width: 8vw;height: 10vw;"></a>
+      <a href="/"><img src="/img/logo.png" alt="" style="width: 8vw;height: 10vw;"></a>
       <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-user-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(74, 230, 230, 0.849);" aria-hidden="true"></i>Team Members <span class="badge" style="margin-left:20px;background-color:rgba(74, 230, 230, 0.849);color:white;transform:scale(1.25)"><%= teamMembers.length %></span></p>
       <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-file-text" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(233, 149, 23, 0.849);" aria-hidden="true"></i>Articles <span class="badge" style="margin-left:20px;background-color:rgba(233, 149, 23, 0.849);color:white;transform:scale(1.25)"><%= articles.length %></span></p>
       <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-briefcase" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(219, 118, 240);" aria-hidden="true"></i>Carrers <span class="badge" style="margin-left:20px;background-color:rgb(219, 118, 240);color:white;transform:scale(1.25)"><% if(carrers.length==0){%>0<%}else{%><%= carrers.length %><%}%></span></p>
@@ -288,12 +304,12 @@ WELCOME TO THE ADMIN PANEL<i class="fa fa-cog fa-spin fa-fw" style="font-size:2.
   </div>
   <!-- end of sidebar -->
   <!-- forms -->
-  <div class="col-lg-4">
+  <div class="col-lg-8">
   <div class="row mt-5">
       <div class="col-lg-12">
           <div class="container">
             <div class="card">
-                <h5 class="card-header" style="background:rgb(63, 235, 11)">Background Colors</h5>
+                <h5 class="card-header" style="background:rgb(63, 235, 11)">Background Colors <strong>( v1 )</strong></h5>
                 <div class="card-body" style="padding: 5px 10px;">
                     <div class="form-group">
                         <form action="/colorchange" method="POST" style="padding: 10px;">
@@ -313,21 +329,30 @@ WELCOME TO THE ADMIN PANEL<i class="fa fa-cog fa-spin fa-fw" style="font-size:2.
       <div class="col-lg-12 mt-3">
           <div class="container">
               <div class="card">
-                  <h5 class="card-header" style="background:rgb(250, 119, 12)">Parent Company</h5>
+                  <h5 class="card-header" style="background:rgb(250, 119, 12)"> Home Page Content : ( Content Disappers after Submission ) </h5>
                   <div class="card-body" style="padding: 5px 10px;">
                       <div class="form-group">
                           <form action="/changeparent" method="POST">
                             <div class="form-group">
-                              <label for="text">Title:</label>
-                              <input type="text" class="form-control" placeholder="Enter title" name="title" id="text" value="<%= parent.title %>">
+                              <label for="text">Title: ( V1 )</label>
+                              <input type="text" class="form-control" placeholder="Enter title ( Version 1 )" name="title" id="text" value="<%= parent.title %>">
                             </div>
                             <div class="form-group">
-                              <label for="content">About:</label>
-                              <textarea type="text" class="form-control" id="content" name="content" rows="3"></textarea>
+                              <label for="content"> Intro :</label>
+                              <textarea type="text" class="form-control" id="content1" name="content" rows="3"></textarea>
+                            </div><div class="form-group">
+                              <label for="content"> Intro Para 2 :</label>
+                              <textarea type="text" class="form-control" id="content2" name="content2" rows="3"></textarea>
+                            </div><div class="form-group">
+                              <label for="content"> Intro Para 3:</label>
+                              <textarea type="text" class="form-control" id="content3" name="content3" rows="3"></textarea>
+                            </div><div class="form-group">
+                              <label for="content"> Intro Para 4:</label>
+                              <textarea type="text" class="form-control" id="content4" name="content4" rows="3" value="<%= parent.content4 %>"></textarea>
                             </div>
                             <div class="form-group">
-                              <label for="image">Image:</label>
-                              <input type="text" class="form-control" placeholder="Enter image name" name="img" id="img" value="<%= parent.image %>">
+                              <label for="image">Image: ( Version 1 )</label>
+                              <input type="text" class="form-control" placeholder="Enter image name ( Version 1 )" name="img" id="img" value="<%= parent.image %>">
                             </div>
                               <button type="submit" class="btn btn-primary">Submit</button>
                           </form>              
@@ -429,14 +454,6 @@ WELCOME TO THE ADMIN PANEL<i class="fa fa-cog fa-spin fa-fw" style="font-size:2.
         </div>
     </div> 
       <!-- end of change contacts -->
-    </div>
-  </div>
-  <div class="col-lg-5">
-      <p style="font-size:2.5vw;color: rgb(224, 223, 223);position: fixed;right: 3vw;top: 3vw;"><u>Display & Edit Section</u></p>
-      <button class="btn btn-success" onclick="performEdit()" style="position: fixed;right: 1vw;top:7.8vw;z-index: 1000;">EDIT</button>  
-      <div style="padding:2vw;position: fixed;right: 1vw;bottom: 2vw;height: 80vh;background: white;width:38vw">
-      
-      <div id="showSection"></div>
     </div>
   </div>
   <!-- end of forms -->

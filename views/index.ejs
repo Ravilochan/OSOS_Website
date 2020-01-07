@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="/logo.png" />
+    <link rel="icon" href="/img/logo.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -37,7 +37,7 @@
     <nav class="navbar navbar-expand-lg bg-light">
       <!-- Brand -->
       <a class="navbar-brand" href="/"
-        ><img src="/logo-zommed.png" alt="Logo"
+        ><img src="/img/logo-zommed.png" alt="Logo"
       /></a>
 
       <!-- Toggler/collapsibe Button -->
@@ -62,6 +62,9 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blogs/1">SpaarksBytes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/social">Social</a>
@@ -103,14 +106,23 @@
     <!-- page1 -->
     <div class="container" id="page1">
       <div class="row">
-        <div class="col-md-5 col-12 ">
+        <div class="col-md-5 col-12 intro">
           <p class="text-intro">
             <%= parent.content %>
           </p>
+          <p class="text-intro">
+            <%= parent.content2 %>
+          </p>
+          <p class="text-intro">
+            <%= parent.content3 %>
+          </p><p class="text-intro">
+            <%= parent.content4 %>
+          </p>
         </div>
         <div class="col-md-7 col-12">
-          <img src="/Group.svg" id="Logo-Tree" alt="Logo-Tree" />
+          <img src="/img/Group.svg" id="Logo-Tree" alt="Logo-Tree" />
         </div>
+      
       </div>
     </div>
     <!-- end of page1 -->
@@ -125,15 +137,20 @@
         <div class="text-center subheading">Work with us</div><br>
         <div class="row">
           <div class="col-12 text-career">
-          <p>We are working on the future of social networking and its transformation to a more relevant platform by utilizing the most cutting-edge tools and technologies. Our product is focused on providing innovative and unique services to all mobile internet users globally through our mobile application. We believe product differentiation is critical to success. We are building a simple yet luxurious product. Our mobile application uses simple features in a way that it brings value proposition to our users. We encourage skilled and hardworking talent to work with us and grow along while building the exceptionally scalable product from scratch. We integrate honesty, ethics, and equality into all aspects of our operations. If you tug the heart with your business, it is a good business.</p>
+          <p>We love to accumulate talent and make this company talent based. Our world is
+            what we make of it. We also highly encourage freshers who have skills but face
+            challenges in finding initial opportunities due to no prior work experience. Any fresher
+            who can show proficiency in her/his skills is encouraged to apply. For us expertise
+            and experience are two different things.</p>
+            <p class="font-weight-bold">Spread your awesomeness. Come work with us.</p>
         </div></div>
         <div class="row">
           <div class="col-md-7 col-lg-7 col-12 career">
             <div class="job-heading">Current Openings</div>
             <div class="job-items">
               <% carrers.forEach(function(carrer){ %>
-              <a href="#"><%= carrer.title %></a>
-              <span> Roles & Responsibilites </span>
+              <a href="/career" style="text-decoration: none;"><%= carrer.title %></a>
+              <span style="font-weight: 600;"> Roles & Responsibilites </span>
               <p><%= carrer.requirements %></p>
               <p><%= carrer.addinfo %></p>
               <% }); %>
@@ -284,20 +301,10 @@
         </div>
          
         </div>
+        <blockquote class="text-dark" style="text-decoration: none; text-align: center; font-weight: 700;">osostechnologies is a part of ososweb.<br><a href="/">osostechnologies.com</a>  &amp; <a href="/">ososweb.com</a> are properties of OSOS Private Limited </blockquote>
       </div>
     </div>
     <!-- Ending of Page4 -->
-    <!-- Mobile Footer -->
-    <section id="mobile-footer">
-      <p class="text-center mobile-cr">
-        Copyright &copy;
-        <script>
-          document.write(new Date().getFullYear());
-        </script>
-        All rights reserved . OSOS Private LTD.
-      </p>
-    </section>
-    <!-- Mobile Footer ending -->
     <!-- Footer -->
     <p class="text-center copyright">
       Copyright &copy;

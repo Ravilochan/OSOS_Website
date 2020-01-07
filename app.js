@@ -143,10 +143,13 @@ app.post("/addarticle", (req, res) => {
     } else {
       // console.log(cont);
       if (cont.length == 0) {
-        // console.log(x);
         var x = {
           Name: req.body.articleName,
           Info: req.body.articleInfo,
+          Info1: req.body.articleInfo1,
+          Info2: req.body.articleInfo2,
+          Info3: req.body.articleInfo3,
+          Date: req.body.articledate,
           Image: req.body.articleImg
         };
         var content = [];
@@ -164,6 +167,10 @@ app.post("/addarticle", (req, res) => {
         var newArticle = {
           Name: req.body.articleName,
           Info: req.body.articleInfo,
+          Info1: req.body.articleInfo1,
+          Info2: req.body.articleInfo2,
+          Info3: req.body.articleInfo3,
+          Date: req.body.articledate,
           Image: req.body.articleImg
         };
         var newarticlecont = cont[0];
@@ -182,7 +189,6 @@ app.post("/addarticle", (req, res) => {
             res.redirect("/adminpanel");
           }
         });
-        // res.redirect('/adminpanel')/
       }
     }
   });
@@ -228,7 +234,6 @@ app.get("/past", (req, res) => {
                         console.log(teamContenterr);
                         res.redirect("/adminpanel");
                       } else {
-                        // console.log(team[0].content);
                         teamContent = team[0].content;
                         var articleContent;
                         Content.find(
@@ -283,11 +288,41 @@ app.get("/articles", (req, res) => {
           console.log(articleContenterr);
           res.redirect("/adminpanel");
         } else {
-          // console.log(team[0].content);
           articleContent = article[0].content;
-          // console.log(articleContent);
+
           res.render("articles", { colors: colors, articles: articleContent });
         }
+      });
+    }
+  });
+});
+app.get("/blogs/:id", (req, res) => {
+  var id = req.params.id;
+  var articleContent;
+  Content.find({ type: "articles" }, (articleContenterr, article) => {
+    if (articleContenterr) {
+      console.log(articleContenterr);
+      res.redirect("/adminpanel");
+    } else {
+      articleContent = article[0].content;
+      no = articleContent.length;
+      if (no % 2 == 0) {
+        nopages = no / 2;
+      } else {
+        nopages = no / 2 + 1;
+      }
+      sendarticles = articleContent.reverse();
+      sendarticles = articleContent.slice(2 * id - 2, 2 * id);
+      if (articleContent.length < 5) {
+        full = articleContent;
+        console.log(full);
+      } else {
+        full = articleContent.slice(0, 5);
+      }
+      res.render("blogs", {
+        articles: sendarticles,
+        full: full,
+        nopages: nopages
       });
     }
   });
@@ -585,6 +620,6 @@ app.get("/socialmediapanel", (req, res) => {
   res.render("socialmediapanel");
 });
 
-app.listen(process.env.PORT || 9000, function() {
+app.listen(process.env.PORT || 9000, "192.168.1.23", function() {
   console.log("Server Started");
 });

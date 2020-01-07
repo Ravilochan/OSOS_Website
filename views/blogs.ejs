@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> Blogs </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/img/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/css-style.css" />
+    <script
+      type="text/javascript"
+      src="https://platform-api.sharethis.com/js/sharethis.js#property=5e12d561d382bc001285df99&product=inline-share-buttons&cms=sop"
+      async="async"
+    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      /* Add a gray background color with some padding */
+      body {
+        background-color: #cdfcd2;
+      }
+      /* Header/Blog Title */
+      .header {
+        padding: 5px;
+        font-size: 40px;
+        text-align: center;
+        margin-left: 10px;
+        background: #89F493;
+      }
+
+      /* Create two unequal columns that floats next to each other */
+      /* Left column */
+      /* Left column */
+      .leftcolumn {
+        float: left;
+        width: 25%;
+        padding-left: 2%;
+      }
+
+      /* Right column */
+      .rightcolumn {
+        float: right;
+        width:75%;
+        padding-left: 20px;
+      }
+
+      /* Fake image */
+      .fakeimg {
+        background-color: #aaa;
+        width: 100%;
+        padding: 20px;
+      }
+      .img {
+        background-color: #aaa;
+        width: 70%;
+        height: 140%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 5px;
+      }
+
+      /* Add a card effect for articles */
+      .card {
+         background-color: white;
+         padding: 20px;
+         margin-top: 20px;
+         margin-right:20px;
+          box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.01),
+          -5px -5px 30px 15px rgba(0,0,0,0.02);
+
+      }
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      .description {
+        margin-left: 80px;
+        margin-right: 85px;
+        letter-spacing: 1px;
+        line-height: 35px;
+        font-size: 18px;
+
+      }
+      p{
+        margin-bottom: 40px;
+      }
+
+      /* Footer */
+      .footer {
+      /*  padding: 1px;
+      */  text-align: center;
+        background: #666666;
+        color: white;
+      /*  margin-top: 0px;
+      */}
+      .center {
+        text-align: center;
+      }
+
+      .pagination {
+        display: inline-block;
+      }
+
+      .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+      }
+
+      .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+      }
+
+      .pagination a:hover:not(.active) {background-color: #ddd;}
+
+      /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 800px) {
+        .leftcolumn, .rightcolumn{
+          width: 100%;
+          padding: 0;
+          transform: translate(7%, 0%);
+        }
+        .pages{
+          transform: translate(3%, 0%);
+        }
+        .nav-item:hover {
+    border-radius: 1.5vw;
+  }
+  .navbar-brand img {
+    width: 25vh;
+    height: 10vh;
+    margin-right: 12%;
+  }
+  .navbar {
+    border-radius: 0px 0px 30px 30px;
+  }
+   #web{
+     display: none;
+   }
+   #mobile{
+    transform: translate(3%, 0%);
+    margin-bottom: 5%;
+   }
+   }
+   @media screen and (min-width: 800px) {
+     #mobile{
+       display:none;
+     }
+   }
+    </style>
+
+    <script>
+    $(document).ready(function(){
+      // Add smooth scrolling to all links
+      $("a").on('click', function(event) {
+    
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+          // Prevent default anchor click behavior
+          event.preventDefault();
+    
+          // Store hash
+          var hash = this.hash;
+    
+          // Using jQuery's animate() method to add smooth page scroll
+          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+       
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+          });
+        } // End if
+      });
+    });
+    </script>
+  </head>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-light" style="">
+      <!-- Brand -->
+      <a class="navbar-brand" href="/"
+        ><img src="/img/logo-zommed.png" alt="Logo"
+      /></a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <!-- <div class="animated-icon1">
+          <span></span><span></span><span></span>
+        </div> -->
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blogs/1">SpaarksBytes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/social">Social</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/career">Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- end of navbar -->
+  <body>
+    <div class="row">
+        <div id="web" class="leftcolumn">
+            <div class="card">
+              <div style="font-size: 2rem; font-weight:500;">Latest SpaarksBytes</div>
+              <% var array=[1,1,2,2,3];for(var i=0;i<full.length;i++){ %>
+              <a style="text-decoration: none; color:#666666" href="<%=array[i]%>"><div class="fakeimg" style="background: #89F493;"><%=full[i].Name %></div></a>
+              <br />
+              <% } %> 
+            </div>
+          </div>
+          <div class="rightcolumn">
+        <% for(var i=0;i<articles.length;i++){ %>
+        <div class="card">
+          <div class="sharethis-inline-share-buttons"></div>
+          <div style="font-size:3rem"><%=articles[i].Name %></div>
+          <div style="font-size:1.2rem"><%=articles[i].Date %></h5>
+
+          <center>
+            <img class="img" src="/<%=articles[i].Image %>" />
+          </center>
+          <div class="description">
+            <p><%=articles[i].Info %></p>
+
+            <p><%=articles[i].Info1 %></p>
+                   <p><%=articles[i].Info2 %></p>
+                   <p><%=articles[i].Info3 %></p>
+          </div>
+        </div>
+        </div>
+      <% } %>   
+</div>
+    </div>
+    <div id="mobile" class="leftcolumn">
+      <div class="card">
+        <div style="font-size: 2rem; font-weight:500;">Latest Posts</div>
+        <% var array=[1,1,2,2,3]; for(var i=0;i<full.length;i++){  %>
+        <a style="text-decoration: none; color:#666666" href="<%=array[i]%>"><div class="fakeimg" style="background: #89F493;"><%=full[i].Name %></div></a>
+        <br />
+        <% } %> 
+      </div>
+    </div>
+    <div class="card pages">
+      <div class="center">
+        <div class="pagination">
+          <a href="/blogs/1">&laquo;</a>
+          <% for(var i=1;i<nopages;i++){ %>
+          <a href="<%=i%>"><%=i%></a>
+          <% } %> 
+          <a href="<%=nopages%>">&raquo;</a>
+        </div>
+      </div>
+    </div>
+    <p class="text-center copyright">
+        Copyright &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        All rights reserved . OSOS PVT LTD.
+      </p>
+    </body>
+    <script>
+      $(document).ready(function() {
+        $(".first-button").on("click", function() {
+          $(".animated-icon1").toggleClass("open");
+        });
+      });
+    </script>
+  </html>
+  

@@ -63,6 +63,9 @@ router.post("/changeparent", (req, res) => {
           content: {
             title: req.body.title,
             content: req.body.content,
+            content2: req.body.content2,
+            content3: req.body.content3,
+            content4: req.body.content4,
             image: req.body.img
           }
         });
@@ -73,6 +76,9 @@ router.post("/changeparent", (req, res) => {
           content: {
             title: req.body.title,
             content: req.body.content,
+            content2: req.body.content2,
+            content3: req.body.content3,
+            content4: req.body.content4,
             image: req.body.img
           }
         };

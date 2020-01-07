@@ -26,9 +26,6 @@
   #Logo-Tree {
     margin-left: -2%;
   }
-  .copyright {
-    display: none;
-  }
   .text-intro {
     margin-top: 15%;
     margin-left: -2.5%;
@@ -51,6 +48,7 @@
   }
   .job-heading {
     text-align: center;
+    font-weight: 500;
     margin-top: 10%;
     margin-left: 5%;
   }
@@ -98,7 +96,7 @@
     margin-left: 9%;
   }
   .fb {
-    margin-left: 2.6%;
+    margin-left: 5%;
   }
   .map img {
     height: 40vh;
@@ -113,6 +111,18 @@
   }
   .sk-instagram-feed-item {
     margin-bottom: -30%;
+  }
+  .sk_post_img {
+    margin-bottom: 1%;
+  }
+  #page4 blockquote {
+    margin-left: 5%;
+  }
+  #pagesocial blockquote {
+    margin-left: 6%;
+  }
+  .intro {
+    margin-top: 2%;
   }
 }
 /* desktop css only */
@@ -134,5 +144,14 @@
   }
   .grid-content {
     margin-right: 10%;
+  }
+  .intro {
+    margin-top: 6.5%;
+  }
+  .career-intro {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 1.8%;
+    margin-bottom: 1.5%;
   }
 }
