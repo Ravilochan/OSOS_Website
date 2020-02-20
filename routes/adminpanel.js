@@ -112,6 +112,7 @@ router.post("/changecarrers", (req, res) => {
       if (cont.length == 0) {
         var x = [];
         var y = {
+          id:req.body.carrerid,
           title: req.body.carrertitle,
           requirements: req.body.carrerreq,
           addinfo: req.body.carrerinfo
@@ -127,6 +128,7 @@ router.post("/changecarrers", (req, res) => {
         console.log("else part");
         // res.redirect('/adminpanel');
         var newcarrer = {
+          id:req.body.carrerid,
           title: req.body.carrertitle,
           requirements: req.body.carrerreq,
           addinfo: req.body.carrerinfo
@@ -150,6 +152,10 @@ router.post("/changecarrers", (req, res) => {
         } else {
           newcarrercont.content.push(newcarrer);
           // console.log(newcarrercont);
+          newcareer =  newcarrercont.content.map((y, i) => {
+            y.id = i + 1
+            return y
+          })
           Content.updateOne({ type: "carrers" }, newcarrercont, function(
             err,
             newContent

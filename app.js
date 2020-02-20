@@ -1,17 +1,19 @@
 // Declarations
-var express = require("express"),
-  methodOverride = require("method-override"),
-  bodyParser = require("body-parser"),
-  mongoose = require("mongoose"),
-  app = express();
+var express = require("express")
+app = express();
+var methodOverride = require("method-override")
+var bodyParser = require("body-parser")
+var mongoose = require("mongoose")
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
 const path = require("path");
 const nodemailer = require("nodemailer");
-
 const fs = require("fs");
+app.set("view engine", "ejs");
+const { convertDeltaToHtml } = require('node-quill-converter');
 
 // DB Connection
+// mongoose.connect("mongodb://localhost:27017/web5");
 const db =
   "mongodb+srv://vamsi:vamsi@123@cluster0-sb3ge.mongodb.net/?retryWrites=true&w=majority";
 mongoose
@@ -20,10 +22,10 @@ mongoose
   .catch(err => console.log(err));
 const multer = require("multer");
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
+  destination: function (req, file, cb) {
     cb(null, "./public/");
   },
-  filename: function(req, file, cb) {
+  filename: function (req, file, cb) {
     cb(null, file.originalname);
   }
 });
@@ -63,7 +65,9 @@ var removeRouter = require("./routes/remove");
 
 const publicDirectoryPath = path.join(__dirname, "/public");
 app.use(session({ secret: "keyboard cat" }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true }));
+app.use(bodyParser.json({limit: '50mb'}));
+
 app.set("view engine", "ejs");
 app.use(express.static(publicDirectoryPath));
 app.use("/", changeAdminPanelRouter);
@@ -75,65 +79,73 @@ app.use(methodOverride("_method"));
 
 app.post("/upload", upload.single("photo"), (req, res) => {
   if (req.file) {
-    // res.json(req.file);
     res.redirect("/adminpanel");
   } else throw "error";
 });
 
-app.post("/addmember", (req, res) => {
-  Content.find({ type: "teamMembers" }, (err, cont) => {
-    if (err) {
-      console.log(err);
-      res.redirect("/adminpanel");
-    } else {
-      // console.log(cont);
-      if (cont.length == 0) {
-        // console.log(x);
-        var x = {
-          Name: req.body.memName,
-          Position: req.body.memPosition,
-          About: req.body.memInfo,
-          Image: req.body.memImg
-        };
-        var content = [];
-        content.push(x);
-        // console.log(content);
-        Content.create({
-          type: "teamMembers",
-          content: content
-        });
-        console.log("if part");
-        res.redirect("/adminpanel");
-      } else {
-        console.log("else part");
-        // res.redirect('/adminpanel');
-        var newmember = {
-          Name: req.body.memName,
-          Position: req.body.memPosition,
-          About: req.body.memInfo,
-          Image: req.body.memImg
-        };
-        var newcarrercont = cont[0];
-        // console.log(newcarrercont.content);
-        newcarrercont.content.push(newmember);
-        // console.log(newcarrercont);
-        Content.updateOne({ type: "teamMembers" }, newcarrercont, function(
-          err,
-          newContent
-        ) {
-          if (err) {
-            console.log(err);
-            res.redirect("/adminpanel");
-          } else {
-            console.log("updated successfully");
-            res.redirect("/adminpanel");
-          }
-        });
-        // res.redirect('/adminpanel')/
-      }
-    }
-  });
-});
+
+//change in multer
+// app.post("/upload", upload.array('photo', 10), (req, res) => {
+//   if (req.file) {
+//     // res.json(req.file);
+//     res.redirect("/adminpanel");
+//   } else throw "error";
+// });
+
+// app.post("/addmember", (req, res) => {
+//   Content.find({ type: "teamMembers" }, (err, cont) => {
+//     if (err) {
+//       console.log(err);
+//       res.redirect("/adminpanel");
+//     } else {
+//       // console.log(cont);
+//       if (cont.length == 0) {
+//         // console.log(x);
+//         var x = {
+//           Name: req.body.memName,
+//           Position: req.body.memPosition,
+//           About: req.body.memInfo,
+//           Image: req.body.memImg
+//         };
+//         var content = [];
+//         content.push(x);
+//         // console.log(content);
+//         Content.create({
+//           type: "teamMembers",
+//           content: content
+//         });
+//         console.log("if part");
+//         res.redirect("/adminpanel");
+//       } else {
+//         console.log("else part");
+//         // res.redirect('/adminpanel');
+//         var newmember = {
+//           Name: req.body.memName,
+//           Position: req.body.memPosition,
+//           About: req.body.memInfo,
+//           Image: req.body.memImg
+//         };
+//         var newcarrercont = cont[0];
+//         // console.log(newcarrercont.content);
+//         newcarrercont.content.push(newmember);
+//         // console.log(newcarrercont);
+//         Content.updateOne({ type: "teamMembers" }, newcarrercont, function (
+//           err,
+//           newContent
+//         ) {
+//           if (err) {
+//             console.log(err);
+//             res.redirect("/adminpanel");
+//           } else {
+//             console.log("updated successfully");
+//             res.redirect("/adminpanel");
+//           }
+//         });
+//         // res.redirect('/adminpanel')/
+//       }
+//     }
+//   });
+// });
 
 app.post("/addarticle", (req, res) => {
   Content.find({ type: "articles" }, (err, cont) => {
@@ -145,12 +157,8 @@ app.post("/addarticle", (req, res) => {
       if (cont.length == 0) {
         var x = {
           Name: req.body.articleName,
-          Info: req.body.articleInfo,
-          Info1: req.body.articleInfo1,
-          Info2: req.body.articleInfo2,
-          Info3: req.body.articleInfo3,
-          Date: req.body.articledate,
-          Image: req.body.articleImg
+          data: req.body.delta,
+          
         };
         var content = [];
         content.push(x);
@@ -164,20 +172,23 @@ app.post("/addarticle", (req, res) => {
       } else {
         console.log("else part");
         // res.redirect('/adminpanel');
+        const { convertDeltaToHtml } = require('node-quill-converter');
         var newArticle = {
           Name: req.body.articleName,
-          Info: req.body.articleInfo,
-          Info1: req.body.articleInfo1,
-          Info2: req.body.articleInfo2,
-          Info3: req.body.articleInfo3,
-          Date: req.body.articledate,
-          Image: req.body.articleImg
+          data: req.body.delta,
+          
         };
+        // let html=convertDeltaToHtml(req.body.delta)
+        // console.log(JSON.stringify(newArticle.data))
         var newarticlecont = cont[0];
-        // console.log(newcarrercont.content);
         newarticlecont.content.push(newArticle);
-        // console.log(newcarrercont);
-        Content.updateOne({ type: "articles" }, newarticlecont, function(
+        // console.log(newarticlecont)
+        newarticle = newarticlecont.content.map((x, i) => {
+          x.id = i + 1
+          return x
+        })
+        // console.log(newarticle)
+        Content.updateOne({ type: "articles" }, newarticlecont, function (
           err,
           newContent
         ) {
@@ -273,7 +284,7 @@ app.get("/past", (req, res) => {
   });
   // console.log(colors);
 });
-
+//previous article
 app.get("/articles", (req, res) => {
   Content.find({ type: "color" }, (err, cont) => {
     var colors;
@@ -281,6 +292,7 @@ app.get("/articles", (req, res) => {
       console.log(err);
       res.redirect("/");
     } else {
+      // console.log(cont)
       colors = cont[0].content;
       var articleContent;
       Content.find({ type: "articles" }, (articleContenterr, article) => {
@@ -296,6 +308,7 @@ app.get("/articles", (req, res) => {
     }
   });
 });
+//v2
 app.get("/blogs/:id", (req, res) => {
   var id = req.params.id;
   var articleContent;
@@ -306,28 +319,24 @@ app.get("/blogs/:id", (req, res) => {
     } else {
       articleContent = article[0].content;
       no = articleContent.length;
-      if (no % 2 == 0) {
-        nopages = no / 2;
-      } else {
-        nopages = no / 2 + 1;
-      }
       sendarticles = articleContent.reverse();
-      sendarticles = articleContent.slice(2 * id - 2, 2 * id);
+      sendarticles = articleContent.slice(id - 1, id);
       if (articleContent.length < 5) {
         full = articleContent;
-        console.log(full);
+        // console.log(full);
       } else {
         full = articleContent.slice(0, 5);
       }
       res.render("blogs", {
         articles: sendarticles,
         full: full,
-        nopages: nopages
+        no: no,
+        id: id
       });
     }
   });
 });
-
+// Version 1
 app.get("/team", (req, res) => {
   Content.find({ type: "color" }, (err, cont) => {
     var colors;
@@ -351,7 +360,7 @@ app.get("/team", (req, res) => {
     }
   });
 });
-
+// v1
 app.get("/fetch/team", (req, res) => {
   var teamContent;
   Content.find({ type: "teamMembers" }, (teamContenterr, team) => {
@@ -366,7 +375,7 @@ app.get("/fetch/team", (req, res) => {
     }
   });
 });
-
+// v1
 app.post("/editmember/:id", (req, res) => {
   var teamContent;
   Content.find({ type: "teamMembers" }, (teamContenterr, team) => {
@@ -374,9 +383,6 @@ app.post("/editmember/:id", (req, res) => {
       console.log(teamContenterr);
       res.redirect("/adminpanel");
     } else {
-      // console.log(team[0].content);
-      // oldteam=team[0];
-      // console.log(req.params.id);
       teamContent = team[0].content;
       var index;
       for (var i = 0; i < teamContent.length; i++) {
@@ -454,8 +460,10 @@ app.get("/career", (req, res) => {
       console.log(carrererr);
       res.redirect("/");
     } else {
-      // console.log(carrer[0].content);
+      // console.log("length")
+      // console.log(carrer[0].content.length);
       carrersContent = carrer[0].content;
+      // console.log(carrersContent.length)
       res.render("career", { carrers: carrersContent });
     }
   });
@@ -524,7 +532,7 @@ function custMailSend(email, f, b) {
     port: 465,
     auth: {
       user: "contactus@osostechnologies.com",
-      pass: "July@2019"
+      pass: "Tech@123"
     }
   });
   var mailOptions = {
@@ -551,7 +559,7 @@ function custMailSend(email, f, b) {
       }
     ]
   };
-  transporter.sendMail(mailOptions, function(error, info) {
+  transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
     } else {
@@ -567,7 +575,7 @@ function custMailSendClient(email, body) {
     port: 465,
     auth: {
       user: "contactus@osostechnologies.com",
-      pass: "July@2019"
+      pass: "Tech@123"
     }
   });
 
@@ -585,7 +593,7 @@ function custMailSendClient(email, body) {
       <p style="text-align:left">Thanking you<br><span>Team OSOS</span></p>
       <blockquote> Note : This is a automated reply. Please don't Reply to this mail. </blockquote>`
   };
-  transporter1.sendMail(mailOptions1, function(error, info) {
+  transporter1.sendMail(mailOptions1, function (error, info) {
     if (error) {
       console.log(error);
     } else {
@@ -612,14 +620,16 @@ app.get("/social", (req, res) => {
   res.render("social");
 });
 
-app.get("/allsocial", (req, res) => {
-  res.send("allsocial");
+app.get("/enter", (req, res) => {
+  res.render("enter");
 });
 
-app.get("/socialmediapanel", (req, res) => {
-  res.render("socialmediapanel");
+
+
+
+app.listen(process.env.PORT || 9007, function () {
+  console.log("Server Started at 9007");
 });
 
-app.listen(process.env.PORT || 9000, "192.168.1.23", function() {
-  console.log("Server Started");
-});
+
+

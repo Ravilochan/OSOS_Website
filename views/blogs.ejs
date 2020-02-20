@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title> Blogs </title>
+    <title>OSOS Articles</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="OSOS technologies, OSOSweb, OSOS Pvt. Ltd., OSOS Private Limited,  OSOS, Social Media, Blogs, Articles, We are hiring, Hiring, Hiring now, Jobs for freshers, Freshers, Hiring android developers, android, android developers, hiring ios app developers, ios app developers, ios, angular, node js, DevOps, AWS, Hyderabad, Social Networking, Careers, Hire, Work with us, SpaarksBytes, Banjara Hills, Jobs in Hyderabad, jobs, technology.">
+<style>
+@import '~quill/dist/quill.core.css'; 
+@import '~quill/dist/quill.bubble.css';
+ @import '~quill/dist/quill.snow.css';
+
+
+</style>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     />
+    <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet"> 
+  <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="/img/logo.png" />
+    <link rel="icon" href="/img/log2.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -31,6 +41,7 @@
       /* Add a gray background color with some padding */
       body {
         background-color: #cdfcd2;
+        overflow-x: inherit !important;
       }
       /* Header/Blog Title */
       .header {
@@ -89,26 +100,26 @@
         clear: both;
       }
 
-      .description {
-        margin-left: 80px;
-        margin-right: 85px;
+      /* .description {
+        margin: 1rem;
         letter-spacing: 1px;
-        line-height: 35px;
-        font-size: 18px;
+        line-height: 2rem;
+        font-size: 1rem;
 
-      }
+      } */
+
+      
+
       p{
         margin-bottom: 40px;
       }
 
       /* Footer */
       .footer {
-      /*  padding: 1px;
-      */  text-align: center;
+        text-align: center;
         background: #666666;
         color: white;
-      /*  margin-top: 0px;
-      */}
+    }
       .center {
         text-align: center;
       }
@@ -134,7 +145,16 @@
       }
 
       .pagination a:hover:not(.active) {background-color: #ddd;}
-
+      /* .article-title{
+        font-size:2 rem;
+        font-weight: 500;
+        
+        
+        
+      } */
+      .author{
+        font-size: 1.3rem;
+      }
       /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
       @media screen and (max-width: 800px) {
         .leftcolumn, .rightcolumn{
@@ -142,6 +162,12 @@
           padding: 0;
           transform: translate(7%, 0%);
         }
+        .img {
+       
+        width: 100%;
+        height: 140%;
+       
+      }
         .pages{
           transform: translate(3%, 0%);
         }
@@ -162,8 +188,19 @@
    #mobile{
     transform: translate(3%, 0%);
     margin-bottom: 5%;
-   }
-   }
+       }
+       .description{
+         margin: 0.5rem;
+         overflow-y: hidden;
+       }
+
+      
+       .author{
+         font-size: 0.5rem;;
+       }
+       
+        }
+
    @media screen and (min-width: 800px) {
      #mobile{
        display:none;
@@ -197,12 +234,17 @@
       });
     });
     </script>
+      <meta property="og:url"           content="http://www.ososweb.com/blogs/<%= id %>" />
+      <meta property="og:type"          content="website" />
+      <meta property="og:title"         content="<%=articles[0].Name %>" />
+      <meta property="og:description"   content="<%=articles[0].Info %>" />
+      <meta property="og:image"         content="http://www.ososweb.com/<%=articles[0].Image %>" />
   </head>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-light" style="">
+    <nav class="navbar navbar-expand-lg bg-light" >
       <!-- Brand -->
       <a class="navbar-brand" href="/"
-        ><img src="/img/logo-zommed.png" alt="Logo"
+        ><img src="/ososicon.png" alt="Logo"
       /></a>
 
       <!-- Toggler/collapsibe Button -->
@@ -248,33 +290,32 @@
     <div class="row">
         <div id="web" class="leftcolumn">
             <div class="card">
-              <div style="font-size: 2rem; font-weight:500;">Latest SpaarksBytes</div>
-              <% var array=[1,1,2,2,3];for(var i=0;i<full.length;i++){ %>
-              <a style="text-decoration: none; color:#666666" href="<%=array[i]%>"><div class="fakeimg" style="background: #89F493;"><%=full[i].Name %></div></a>
+              <div style="font-size: 1.5rem; font-weight:250;">Latest SpaarksBytes</div>
+              <%for(var i=0;i<full.length;i++){ %>
+              <a style="text-decoration: none; color:#666666" href="<%=i+1%>"><div class="fakeimg" style="background: #89F493;"><%=full[i].Name %></div></a>
               <br />
               <% } %> 
             </div>
           </div>
           <div class="rightcolumn">
-        <% for(var i=0;i<articles.length;i++){ %>
+       
         <div class="card">
-          <div class="sharethis-inline-share-buttons"></div>
-          <div style="font-size:3rem"><%=articles[i].Name %></div>
-          <div style="font-size:1.2rem"><%=articles[i].Date %></h5>
-
-          <center>
-            <img class="img" src="/<%=articles[i].Image %>" />
-          </center>
-          <div class="description">
-            <p><%=articles[i].Info %></p>
-
-            <p><%=articles[i].Info1 %></p>
-                   <p><%=articles[i].Info2 %></p>
-                   <p><%=articles[i].Info3 %></p>
-          </div>
+          <!-- <div class="sharethis-inline-share-buttons"></div> -->
+          <div  class="article-title" style=" font-size:35px;font-weight: 500;margin-bottom: 20px;line-height: 2.5rem;overflow-y: hidden;"><%=articles[0].Name %></div>
+          <div class="author" ><%=articles[0].Date %></div>
+          <!-- <center>
+            <img class="img mb-3" src="/<%=articles[0].Image %>" />
+          </center> -->
+          <div class="description" style="overflow-x: initial;">
+            <%-articles[0].data%>
+                </div>
+             
+                
+                <div style="text-align: center;">************</div><br>
+                <div style="text-align: center;"><i>If you thought that the article was constructive then Stay Tuned Folks.  Do check out our social media handle for more.</i></div>
+                <div class="sharethis-inline-share-buttons"></div> 
         </div>
         </div>
-      <% } %>   
 </div>
     </div>
     <div id="mobile" class="leftcolumn">
@@ -290,13 +331,16 @@
       <div class="center">
         <div class="pagination">
           <a href="/blogs/1">&laquo;</a>
-          <% for(var i=1;i<nopages;i++){ %>
+          <% for(var i=1;i<no;i++){ %>
           <a href="<%=i%>"><%=i%></a>
           <% } %> 
-          <a href="<%=nopages%>">&raquo;</a>
+          <a href="<%=no%>">&raquo;</a>
         </div>
       </div>
     </div>
+<!-- social icons -->
+
+
     <p class="text-center copyright">
         Copyright &copy;
         <script>
@@ -312,5 +356,11 @@
         });
       });
     </script>
+    <script>                                                       
+      document.querySelectorAll("pre.ql-syntax").forEach(block => { 
+          hljs.highlightBlock(block);                               
+      })                                                            
+     </script>   
+     
   </html>
   

@@ -2,16 +2,53 @@
 <html lang="en">
 <head>
   <title>Admin Panel</title>
+  <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet"> 
+  <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
   <meta charset="utf-8">
-  <link rel="icon" href="/img/logo.png">
+  <link rel="icon" href="/img/log2.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet"> 
+  <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Gupter|Solway|Ubuntu&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
   <style>
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="14px"]::before {
+    content: '14';
+    font-size: 14px !important;
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="16px"]::before {
+    content: '16';
+    font-size: 16px !important;
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="18px"]::before {
+    content: '18';
+    font-size: 18px !important;
+}
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="32px"]::before {
+    content: '32';
+    font-size: 32px !important;
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="42px"]::before {
+    content: '42';
+    font-size: 42px !important;
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="52px"]::before {
+    content: '52';
+    font-size: 52px !important;
+}
+
+
+
+
   body{
     overflow-x: hidden;
     background: #0F2027;  /* fallback for old browsers */
@@ -162,53 +199,7 @@ WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size
   </div>
 </div>
 <!-- Adding Articles Modal -->
-<div class="modal fade" id="addArticle_modal">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-    
-      <!-- Modal Header -->
-      <div class="modal-header" style="background:rgba(233, 149, 23, 0.849)">
-        <h3 class="modal-title">Adding Articles</h3>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      
-      <!-- Modal body -->
-      <div class="modal-body">
-          <div class="form-group">
-              <form action="/addarticle" method="POST">
-                <div class="form-group">
-                  <label for="articleName">Article Name:</label>
-                  <input type="text" class="form-control" placeholder="Enter name" id="articleName" name="articleName">
-                </div>
-                <div class="form-group">
-                  <label for="articleInfo">Article Info:</label>
-                  <textarea type="text" class="form-control" placeholder="Enter Intro Para" id="articleInfo" name="articleInfo"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="articleInfo">Article Info:</label>
-                  <textarea type="text" class="form-control" placeholder="Enter Para 1" id="articleInfo1" name="articleInfo1"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="articleInfo">Article Info:</label>
-                  <textarea type="text" class="form-control" placeholder="Enter Para 2" id="articleInfo2" name="articleInfo2"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="articleInfo">Article Info:</label>
-                  <textarea type="text" class="form-control" placeholder="Enter Conclusion Para " id="articleInfo3" name="articleInfo3"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="articleInfo">Article Date:</label>
-                  <textarea type="text" class="form-control" placeholder="Enter Date " id="articledate" name="articledate"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="articleImg">Article Image:</label>
-                  <input type="text" class="form-control" placeholder="Enter information" id="articleImg" name="articleImg">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>                
-          </div>
-      </div>
-    </div>
+
   </div>
 </div>
 <!-- Adding Careers Modal -->
@@ -275,10 +266,10 @@ WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size
   <!-- sidebar -->
   <div class="col-lg-3">
     <div class="container" style="height: 85vh;width:23vw;position:fixed;left:2vw;top:6vw;background: white;padding:20px;padding-top: 0px;">
-      <a href="/"><img src="/img/logo.png" alt="" style="width: 8vw;height: 10vw;"></a>
-      <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-user-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(74, 230, 230, 0.849);" aria-hidden="true"></i>Team Members <span class="badge" style="margin-left:20px;background-color:rgba(74, 230, 230, 0.849);color:white;transform:scale(1.25)"><%= teamMembers.length %></span></p>
+      <a href="/"><img src="/img/log2.png" alt="" style="width: 8vw;height: 10vw;"></a>
+      <!-- <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-user-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(74, 230, 230, 0.849);" aria-hidden="true"></i>Team Members <span class="badge" style="margin-left:20px;background-color:rgba(74, 230, 230, 0.849);color:white;transform:scale(1.25)"><%= teamMembers.length %></span></p> -->
       <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-file-text" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(233, 149, 23, 0.849);" aria-hidden="true"></i>Articles <span class="badge" style="margin-left:20px;background-color:rgba(233, 149, 23, 0.849);color:white;transform:scale(1.25)"><%= articles.length %></span></p>
-      <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-briefcase" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(219, 118, 240);" aria-hidden="true"></i>Carrers <span class="badge" style="margin-left:20px;background-color:rgb(219, 118, 240);color:white;transform:scale(1.25)"><% if(carrers.length==0){%>0<%}else{%><%= carrers.length %><%}%></span></p>
+      <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-briefcase" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(219, 118, 240);" aria-hidden="true"></i>Careers <span class="badge" style="margin-left:20px;background-color:rgb(219, 118, 240);color:white;transform:scale(1.25)"><% if(carrers.length==0){%>0<%}else{%><%= carrers.length %><%}%></span></p>
       <p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-picture-o" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(255, 208, 0)" aria-hidden="true"></i>Images<span class="badge" style="margin-left:20px;background-color:rgb(255, 208, 0);color:white;transform:scale(1.25)"><%= files.length %></span></p>
       <!-- images in the server -->
       <!-- <p style="font-family: 'Ubuntu', sans-serif; font-size:1.8vw;margin-top: 2vw;;">Images in the server</p>
@@ -292,11 +283,11 @@ WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size
       <div class="row" style="border-top: 1px dotted rgba(0, 0, 0, 0.589);padding-top: 1.5vw;">
         <!-- <div class="col-lg-1"></div> -->
         <div class="col-lg-12">
-          <a href="#addMember_modal" style="text-decoration: none;color: black;" data-toggle="modal"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-plus-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(74, 230, 230, 0.849);" aria-hidden="true"></i>Add Team Members</p></a>
+          <!-- <a href="#addMember_modal" style="text-decoration: none;color: black;" data-toggle="modal"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-plus-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(74, 230, 230, 0.849);" aria-hidden="true"></i>Add Team Members</p></a> -->
           <a href="#addArticle_modal" style="text-decoration: none;color: black;" data-toggle="modal"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-plus-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgba(233, 149, 23, 0.849);" aria-hidden="true"></i>Add Articles</p></a>
           <a href="#addCareer_modal" style="text-decoration: none;color: black;" data-toggle="modal"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-plus-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(219, 118, 240);" aria-hidden="true"></i>Add Careers</p></a>
           <a href="#addImage_modal" style="text-decoration: none;color: black;" data-toggle="modal"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-plus-circle" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(255, 208, 0)" aria-hidden="true"></i>Add Images</p></a>
-          <a href="/socialmedia" style="text-decoration: none;color: black;"><p style="font-family: 'Ubuntu', sans-serif;font-size: 1.4vw;"> <i class="fa fa-share-square" style="margin-right: 1.5vw;transform:scale(1.5);color: rgb(255, 208, 0)"></i> Social Media Panel</p></a>
+         
         </div>
         <!-- <div class="col-lg-1"></div> -->
       </div>
@@ -308,7 +299,7 @@ WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size
   <div class="row mt-5">
       <div class="col-lg-12">
           <div class="container">
-            <div class="card">
+            <!-- <div class="card">
                 <h5 class="card-header" style="background:rgb(63, 235, 11)">Background Colors <strong>( v1 )</strong></h5>
                 <div class="card-body" style="padding: 5px 10px;">
                     <div class="form-group">
@@ -322,7 +313,7 @@ WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
           </div>        
       </div>
       <!-- end of background colors -->
@@ -419,12 +410,12 @@ WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size
             <% carrers.forEach(function(carrer){ %>
               <h5 class="<%= carrer %>" style="font-size: 1.5vw;"> 
                 <span class="badge" style="background:white;color: black;"><i class="fa fa-briefcase" style="margin-right:1vw;color: rgb(219, 118, 240);" aria-hidden="true"></i><%= carrer.title %></span>
-                <a href="#delCareer_modal" data-toggle="modal" style="text-decoration: none;color: black;" data-book-id="<%= carrer.title %>"><i class="fa fa-times" aria-hidden="true"></i></a>                              
+                <a href="#delCareer_modal" data-toggle="modal" style="text-decoration: none;color: black;" data-book-id="<%= carrer.id %>"><i class="fa fa-times" aria-hidden="true"></i></a>                              
               </h5>
             <% }); %>   
         </div>
       </div>
-      <div class="col-lg-12 mt-3" id="addMember" style="margin-left:1.25vw;margin-bottom: 2vw;">
+      <!-- <div class="col-lg-12 mt-3" id="addMember" style="margin-left:1.25vw;margin-bottom: 2vw;">
         <h4 style="color: white;">Existing Team Members</h4>
         <div class="row pt-2" style="background:rgba(74, 230, 230, 0.849);height: 100%;">
             <% for(var i=0;i<teamMembers.length;i++){ %>
@@ -437,7 +428,7 @@ WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size
             </div>
           <% } %>
         </div>
-      </div>  
+      </div>   -->
     <!-- end of add member -->
     <div class="col-lg-12 mt-3" id="articleDisp" style="margin-left:1.25vw;margin-bottom: 2vw;">
         <h4 style="color: white;">Existing Articles</h4>
@@ -446,7 +437,7 @@ WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size
                   <div class="col-lg-4" style="padding: 0 2px;">
                     <div class="card" style="margin-bottom:10px;">
                       <div class="card-header" style="padding: 0 2px;"><i class="fa fa-file-text" style="margin-right: 3px;color: rgba(233, 149, 23, 0.849);" aria-hidden="true"></i><%= articles[i].Name %>
-                        <a href="#delArticle_modal" data-toggle="modal" style="text-decoration: none;color: black;" data-book-id="<%= articles[i].Name %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        <a href="#delArticle_modal" data-toggle="modal" style="text-decoration: none;color: black;" data-book-id="<%= articles[i].id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
                       </div>
                     </div>    
                   </div>
@@ -462,6 +453,87 @@ WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size
 <a href="/logout" class="btn btn-danger" style="display: inline;margin-left: 50vw;">Logout</a>
 <br><br>
 <script src="/js/adminpanel.js"></script>
+
+<div class="modal fade" id="addArticle_modal" >
+  <div class="modal-dialog modal-md" >
+    <div class="modal-content"style="width: 900px;">
+    
+      <!-- Modal Header -->
+      <div class="modal-header" style="background:rgba(233, 149, 23, 0.849)">
+        <h3 class="modal-title">Adding Articles</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body" >
+          <div class="form-group"> 
+              <form action="/addarticle" method="POST" >
+             
+                <div class="form-group">
+                  <label for="articleInfo">ArticleName:</label>
+                  <input type="text" class="form-control" placeholder="Enter name" name="articleName">
+                </div>
+          
+                <body>
+                  <div id="editor" name="delta" ></div>
+                  <button onclick="logHtmlContent()">submit</button>
+                  <textarea type="hidden"    id="delta" name="delta" style="display: none;"></textarea>
+                </body>
+              </form>                
+          </div>
+      </div>
+      </div>
+    </div>
+    </div>
+    <script>
+      var Size = Quill.import('attributors/style/size');
+      Size.whitelist = ['14px', '16px', '18px', '32px', '42px', '52px'];
+      Quill.register(Size, true);
+      var quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+          toolbar: {
+            container: [
+              
+              ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+              ['blockquote', 'code-block'],
+  
+              [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+              [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+              [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+              [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+              [{ 'direction': 'rtl' }],                         // text direction
+  
+              [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+              [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+              ['link', 'image', 'video', 'formula'],
+              [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+              [{ 'font': [] }],
+              [{ 'align': [] }],
+              ['clean'],                                         // remove formatting button
+              
+            ],
+            handlers: {
+              image: imageHandler,
+            }
+          }
+        }
+      });
+    
+      function imageHandler() {
+        var range = this.quill.getSelection();
+        var value = prompt('What is the image URL');
+         this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
+      }
+     
+      function logHtmlContent() {
+        var delta = quill.root.innerHTML
+        console.log(delta);
+        document.getElementById("delta").value = delta
+      } 
+    </script> 
+
+
 <p class="text-center copyright">
   Copyright &copy;
   <script>
@@ -471,3 +543,4 @@ WELCOME TO THE ADMIN PANEL v2<i class="fa fa-cog fa-spin fa-fw" style="font-size
 </p>
 </body>
 </html>
+

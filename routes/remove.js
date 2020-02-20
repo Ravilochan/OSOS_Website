@@ -44,30 +44,32 @@ router.post("/removeArticle/:id", (req, res) => {
     } else {
       // res.send(req.params.id);
       // var names=[];
-      var articleArr = cont[0].content;
-      articleArr = articleArr.filter(function(item) {
-        return item.Name != req.params.id;
-      });
-      // console.log(teamArr);
-      var obj = {
-        type: "articles",
-        content: articleArr
-      };
-      Content.updateOne({ type: "articles" }, obj, function(err, newContent) {
-        if (err) {
-          console.log(err);
-          res.redirect("/adminpanel");
-        } else {
-          console.log("updated successfully");
-          res.redirect("/adminpanel");
-        }
-      });
+      // console.log(cont)
+       var articleArr = cont[0].content;
+      // console.log(articleArr)
+        articleArr = articleArr.filter(function(item) {
+          return item.id != req.params.id;
+        });
+        // console.log(teamArr);
+        var obj = {
+          type: "articles",
+          content: articleArr
+        };
+        Content.updateOne({ type: "articles" }, obj, function(err, newContent) {
+          if (err) {
+            console.log(err);
+            res.redirect("/adminpanel");
+          } else {
+            // console.log(newContent)
+            console.log("deleted successfully");
+            res.redirect("/adminpanel");
+          }
+        });
     }
   });
 });
 
 router.post("/removeCarrer/:id", (req, res) => {
-  console.log("printing something");
   console.log(req.params);
   Content.find({ type: "carrers" }, (err, cont) => {
     if (err) {
@@ -78,7 +80,7 @@ router.post("/removeCarrer/:id", (req, res) => {
       var carrerArr = cont[0].content;
       // res.send(req.params.id)
       carrerArr = carrerArr.filter(function(item) {
-        return item.title != req.params.id;
+        return item.id != req.params.id;
       });
       console.log(carrerArr);
       // // console.log(teamArr);
@@ -91,7 +93,8 @@ router.post("/removeCarrer/:id", (req, res) => {
           console.log(err);
           res.redirect("/adminpanel");
         } else {
-          console.log("updated successfully");
+          // console.log(newContent)
+          console.log("deleted career successfully");
           res.redirect("/adminpanel");
         }
       });
